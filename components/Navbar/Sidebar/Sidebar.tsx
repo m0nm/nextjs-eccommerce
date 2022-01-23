@@ -12,7 +12,6 @@ function Sidebar() {
   const [popup, setPopup] = useState(false);
 
   const handlePopup = () => setPopup(!popup);
-  console.log("popup: ", popup);
   //  < ------ -------- >
 
   //  detect if user clicked outside the popup
@@ -25,16 +24,19 @@ function Sidebar() {
     <>
       {/* sidebar */}
 
-      <div className="absolute right-0 mx-4 dark:invert">
+      <div className="absolute right-0 mx-4">
         <div ref={clickedOutside} className="relative ">
           {/* menu svg */}
-          <div onClick={() => setPopup(!popup)} className=" relative h-7 w-7">
+          <div
+            onClick={() => setPopup(!popup)}
+            className=" relative h-7 w-7 dark:invert"
+          >
             <Image alt="menu" layout="fill" src={menuSvg} />
           </div>
 
           {/* menu popup */}
           {popup && (
-            <div className="absolute top-9 right-6 px-4 h-52 w-56 shadow-lg border rounded-sm grid place-items-center">
+            <div className="bg-white dark:bg-zinc-800 absolute top-9 right-6 px-4 h-52 w-56 shadow-lg border rounded-sm grid place-items-center">
               {/* login/logout  */}
               <div className="w-full mt-4 h-4 text-center cursor-pointer flex items-center">
                 {/* user svg */}
@@ -54,8 +56,8 @@ function Sidebar() {
               </div>
 
               {/* dark mode */}
-              <div className="flex justify-between items-center w-full">
-                <div className="mt-1 relative h-7 w-7">
+              <div className="flex justify-between items-center w-full h-6">
+                <div className="mt-1 relative h-full w-7">
                   <DarkMode />
                 </div>
                 <p className="text-2xl">Switch Theme</p>

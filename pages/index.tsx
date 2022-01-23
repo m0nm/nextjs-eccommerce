@@ -1,8 +1,8 @@
-import type { NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Navbar from "../components/Navbar/Navbar";
-
+import Products from "../components/Products/Products";
 const Home: NextPage = () => {
   return (
     <>
@@ -12,8 +12,23 @@ const Home: NextPage = () => {
 
       {/* Navbar */}
       <Navbar />
+
+      {/* display products */}
+      <Products />
     </>
   );
 };
 
 export default Home;
+
+// fetch store api
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("https://fakestoreapi.com/products");
+  const products = await res.json();
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
