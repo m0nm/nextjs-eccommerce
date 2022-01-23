@@ -3,9 +3,6 @@ import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
 
 import logo from "../../public/logo1.png";
-import menuSvg from "../../public/svg/menu.svg";
-import userSvg from "../../public/svg/user.svg";
-import cartSvg from "../../public/svg/cart.svg";
 import DarkMode from "../dark-mode/DarkMode";
 import Sidebar from "./Sidebar/Sidebar";
 

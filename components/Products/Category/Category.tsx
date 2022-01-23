@@ -5,7 +5,13 @@ function Category() {
   return (
     <div className="px-4 py-2 rounded-xl border border-zinc-400 flex items-center justify-center cursor-pointer">
       <p className="text-xl font-medium mr-2 cursor-pointer">Categories</p>
-      <Image src={menuSvg} alt="categories" width="34" height="34" />
+      <Image
+        src={menuSvg}
+        alt="categories"
+        width="34"
+        height="34"
+        className="dark:invert"
+      />
 
       {/* popup */}
       {/* <div className="w-60 h-44 rounded-sm text-left divide-y dark:divide-slate-200 bg-white dark:bg-[#1b1b1f] drop-shadow-lg  z-20  flex flex-col justify-between"> */}
