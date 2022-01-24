@@ -3,7 +3,7 @@ import menuSvg from "../../../public/svg/category.svg";
 
 function Category() {
   return (
-    <div className="bg-gray-200 px-4 py-2 rounded-xl flex items-center justify-center cursor-pointer">
+    <div className="bg-gray-200 dark:bg-zinc-700 px-4 py-2 rounded-xl flex items-center justify-center cursor-pointer">
       <p className="text-xl font-medium mr-2 cursor-pointer">Categories</p>
       <Image
         src={menuSvg}

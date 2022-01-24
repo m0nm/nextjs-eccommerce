@@ -1,9 +1,10 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import Navbar from "../components/Navbar/Navbar";
 import Products from "../components/Products/Products";
-const Home: NextPage = () => {
+import { IProducts } from "../interface/Index";
+
+const Home = ({ products }: IProducts) => {
   return (
     <>
       <Head>
@@ -14,7 +15,7 @@ const Home: NextPage = () => {
       <Navbar />
 
       {/* display products */}
-      <Products />
+      <Products products={products} />
     </>
   );
 };
@@ -23,7 +24,7 @@ export default Home;
 
 // fetch store api
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://fakestoreapi.com/products");
+  const res = await fetch("https://fakestoreapi.com/products?limit=3");
   const products = await res.json();
 
   return {
