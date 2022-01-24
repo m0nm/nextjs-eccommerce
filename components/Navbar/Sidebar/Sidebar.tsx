@@ -11,12 +11,12 @@ function Sidebar() {
   // toggle popup
   const [popup, setPopup] = useState(false);
 
-  const handlePopup = () => setPopup(!popup);
+  const handlePopup = () => setPopup(false);
   //  < ------ -------- >
 
   //  detect if user clicked outside the popup
   const clickedOutside = useDetectClickOutside({
-    onTriggered: handlePopup,
+    onTriggered: () => setPopup(false),
   });
 
   //  < ------ -------- >
