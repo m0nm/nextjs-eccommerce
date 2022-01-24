@@ -11,7 +11,6 @@ function Sidebar() {
   // toggle popup
   const [popup, setPopup] = useState(false);
 
-  const handlePopup = () => setPopup(false);
   //  < ------ -------- >
 
   //  detect if user clicked outside the popup
@@ -56,7 +55,7 @@ function Sidebar() {
               </div>
 
               {/* dark mode */}
-              <div className="flex justify-between items-center w-full h-6">
+              <div className="flex justify-between items-center w-full h-6 cursor-pointer">
                 <div className="mt-1 relative h-full w-7">
                   <DarkMode />
                 </div>
