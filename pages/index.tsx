@@ -24,7 +24,7 @@ export default Home;
 
 // fetch store api
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://fakestoreapi.com/products?limit=3");
+  const res = await fetch("https://fakestoreapi.com/products");
   const products = await res.json();
 
   return {
