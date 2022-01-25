@@ -12,7 +12,7 @@ function Navbar() {
 
   // return ---
   return (
-    <nav className="w-full h-20 bg-white dark:bg-zinc-800 sticky drop-shadow-md z-10 flex justify-center md:justify-between items-center">
+    <nav className="w-full h-20 mb-28 bg-white dark:bg-zinc-800 sticky shadow-md z-10 flex justify-center md:justify-between items-center">
       {/* logo */}
       <Link passHref href="/">
         <div className="relative w-40 h-10 mx-4 cursor-pointer dark:invert">
