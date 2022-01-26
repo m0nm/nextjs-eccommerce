@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { IProducts } from "../../interface/Index";
 import Category from "./Category/Category";
 import ProductCard from "./ProductCard/ProductCard";
 import Searchbar from "./Searchbar/Searchbar";
 
 function Products({ products }: IProducts) {
+  // filter products by category
+  const [category, setCategory] = useState("");
+
+  const filteredProducts = products.filter((product) => {
+    // return all products
+    if (category === "") {
+      return product;
+    }
+
+    if (product.category.toLowerCase() === category.toLowerCase()) {
+      return product;
+    }
+  });
+
   return (
     <div className="bg-white dark:bg-zinc-800 flex flex-col items-center w-[90%] min-h-[250px] mx-auto p-6 rounded-md shadow-md">
       {/* header */}
@@ -12,7 +27,7 @@ function Products({ products }: IProducts) {
       {/* Category and Searchbar */}
       <div className="flex flex-col-reverse md:flex-row w-full h-10 justify-between">
         {/* category */}
-        <Category />
+        <Category setCategory={setCategory} />
 
         {/* searchbar */}
         <Searchbar />
@@ -20,7 +35,7 @@ function Products({ products }: IProducts) {
 
       {/* Product card */}
       <div className="w-full mt-2 flex flex-col md:flex-row justify-between items-center gap-4 flex-wrap">
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}
       </div>
