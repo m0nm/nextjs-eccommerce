@@ -5,16 +5,31 @@ import ProductCard from "./ProductCard/ProductCard";
 import Searchbar from "./Searchbar/Searchbar";
 
 function Products({ products }: IProducts) {
+  // search for products
+  const [search, setSearch] = useState("");
+
   // filter products by category
   const [category, setCategory] = useState("");
 
   const filteredProducts = products.filter((product) => {
     // return all products
-    if (category === "") {
+    if (category === "" && search === "") {
       return product;
     }
 
-    if (product.category.toLowerCase() === category.toLowerCase()) {
+    // return searched product
+    if (
+      search !== "" &&
+      product.title.toLowerCase().includes(search.toLowerCase())
+    ) {
+      return product;
+    }
+
+    // return products of category
+    if (
+      search === "" &&
+      product.category.toLowerCase() === category.toLowerCase()
+    ) {
       return product;
     }
   });
@@ -30,7 +45,7 @@ function Products({ products }: IProducts) {
         <Category setCategory={setCategory} />
 
         {/* searchbar */}
-        <Searchbar />
+        <Searchbar setCategory={setCategory} setSearch={setSearch} />
       </div>
 
       {/* Product card */}
