@@ -48,8 +48,13 @@ function Products({ products }: IProducts) {
         <Searchbar setCategory={setCategory} setSearch={setSearch} />
       </div>
 
+      {/* current category */}
+      <p className="mr-auto ml-2 mt-4 text-lg italic">
+        {category.toUpperCase()}
+      </p>
+
       {/* Product card */}
-      <div className="w-full mt-2 flex flex-col md:flex-row justify-between items-center gap-4 flex-wrap">
+      <div className="w-full flex flex-col md:flex-row items-center gap-8 flex-wrap">
         {filteredProducts.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}

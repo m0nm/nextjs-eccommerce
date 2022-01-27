@@ -22,3 +22,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@-webkit-keyframes autofill {
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
+  }
+}

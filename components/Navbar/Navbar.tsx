@@ -20,7 +20,7 @@ function Navbar() {
         </div>
       </Link>
 
-      {/* user and cart */}
+      {/* navbar items */}
       <div className="flex items-center h-full">
         {!isMobile && (
           <>
