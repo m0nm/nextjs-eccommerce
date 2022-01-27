@@ -1,6 +1,5 @@
 # Tasks
 
 - find illustration
-- add login / register
-- add next auth
+- add next auth (email & password / google oauth)
 - add cart page

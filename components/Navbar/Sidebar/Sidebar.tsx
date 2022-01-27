@@ -6,6 +6,7 @@ import menuSvg from "../../../public/svg/menu.svg";
 import userSvg from "../../../public/svg/user.svg";
 import cartSvg from "../../../public/svg/cart.svg";
 import DarkMode from "../../dark-mode/DarkMode";
+import Link from "next/link";
 
 function Sidebar() {
   // toggle popup
@@ -37,13 +38,15 @@ function Sidebar() {
           {popup && (
             <div className="bg-white dark:bg-zinc-800 absolute top-9 right-6 px-4 h-52 w-56 shadow-lg border rounded-sm grid place-items-center">
               {/* login/logout  */}
-              <div className="w-full mt-4 h-4 text-center cursor-pointer flex items-center">
-                {/* user svg */}
-                <div className="relative w-7 h-7 mr-6 dark:invert">
-                  <Image alt="user" layout="fill" src={userSvg} />
+              <Link href="/login" passHref>
+                <div className="w-full mt-4 h-4 text-center cursor-pointer flex items-center">
+                  {/* user svg */}
+                  <div className="relative w-7 h-7 mr-6 dark:invert">
+                    <Image alt="user" layout="fill" src={userSvg} />
+                  </div>
+                  <p className="text-2xl ">Login</p>
                 </div>
-                <p className="text-2xl ">Login</p>
-              </div>
+              </Link>
 
               {/* cart */}
               <div className="w-full h-4 text-center cursor-pointer flex items-center">
