@@ -23,7 +23,7 @@ function DarkMode() {
   };
   return (
     <div
-      className={`w-full h-full 
+      className={`w-full h-full
       ${isMobile && "before:w-48 before:h-6 before:absolute"}`}
       onClick={switchTheme}
     >
