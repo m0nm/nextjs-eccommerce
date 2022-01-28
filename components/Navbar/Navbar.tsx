@@ -29,9 +29,11 @@ function Navbar() {
               <DarkMode />
             </div>
             {/* login */}
-            <div className="ml-6 px-4 h-full grid place-items-center text-2xl tracking-wide border-l-2 dark:border-r-zinc-900">
-              <a href="#">Login</a>
-            </div>
+            <Link href="/login" passHref>
+              <div className="ml-6 px-4 h-full grid place-items-center text-2xl tracking-wide border-l-2 dark:border-r-zinc-900 cursor-pointer">
+                <a>Login</a>
+              </div>
+            </Link>
           </>
         )}
       </div>

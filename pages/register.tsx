@@ -25,7 +25,7 @@ function Register() {
       </Head>
 
       {/* dark mode */}
-      <div className="absolute top-6 md:top-4 left-1 md:right-4">
+      <div className="absolute top-6 md:top-4 md:right-4">
         <div className="relative w-10 cursor-pointer h-10">
           <DarkMode />
         </div>
