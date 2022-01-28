@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import DarkMode from "../components/dark-mode/DarkMode";
@@ -9,14 +9,44 @@ import googleSvg from "../public/svg/google.svg";
 import { registerSchema } from "../schema/Schema";
 import { IFormInputs } from "../interface/Index";
 function Register() {
+  // react-hook-form
   const {
     register,
+    getValues,
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInputs>({ resolver: yupResolver(registerSchema) });
 
-  const onSubmit = () => console.log("errors");
-  console.log("errors: ", errors);
+  const [userExist, setUserExist] = useState(false);
+
+  // create a new user
+  const createUser = async () => {
+    const user = {
+      email: getValues("email"),
+      password: getValues("password"),
+    };
+
+    try {
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      // check if user already exists
+      if (res.status === 422) {
+        setUserExist(true);
+      } else {
+        setUserExist(false);
+      }
+    } catch (error) {
+      // if user already exists
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -35,11 +65,14 @@ function Register() {
       <div className="w-screen h-screen grid place-items-center">
         {/* form */}
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(createUser)}
           className="bg-white dark:bg-zinc-800 px-4 h-[90%] w-4/5 md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
         >
           <h1 className="font-bold text-4xl mb-10 mt-8">Sign Up</h1>
 
+          {userExist && (
+            <p className="text-red-500 text-lg mb-4">User Already Exist!</p>
+          )}
           {/* input fields */}
           <div className="h-1/3 w-full flex flex-col justify-between items-center">
             {/* email */}
