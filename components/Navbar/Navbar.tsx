@@ -1,14 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
-
+import { useSession } from "next-auth/react";
 import logo from "../../public/logo1.png";
 import DarkMode from "../dark-mode/DarkMode";
 import Sidebar from "./Sidebar/Sidebar";
+import UserCart from "./User_Cart/UserCart";
 
 function Navbar() {
-  // check for mobile
+  // check if on mobile
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // check for session
+  const { data: session } = useSession();
 
   // return ---
   return (
@@ -28,12 +32,16 @@ function Navbar() {
             <div className="relative w-7 cursor-pointer h-full p-4">
               <DarkMode />
             </div>
-            {/* login */}
-            <Link href="/login" passHref>
-              <div className="ml-6 px-4 h-full grid place-items-center text-2xl tracking-wide border-l-2 dark:border-r-zinc-900 cursor-pointer">
-                <a>Login</a>
-              </div>
-            </Link>
+            {/* login or user/cart */}
+            {session ? (
+              <UserCart />
+            ) : (
+              <Link href="/login" passHref>
+                <div className="ml-6 px-4 h-full grid place-items-center text-2xl tracking-wide border-l-2 dark:border-r-zinc-900 cursor-pointer">
+                  <a>Login</a>
+                </div>
+              </Link>
+            )}
           </>
         )}
       </div>

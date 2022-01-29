@@ -6,20 +6,20 @@ export default NextAuth({
     strategy: "jwt",
   },
 
-  secret: process.env.SECERT,
-
   jwt: { secret: process.env.SECRET },
+
+  secret: process.env.SECERT,
 
   providers: [
     CredentialsProvider({
       credentials: {},
 
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         const res = await fetch(`${process.env.SERVER}/api/login`, {
           method: "POST",
           body: JSON.stringify({
-            email: credentials?.email,
-            password: credentials?.password,
+            email: req.body?.email,
+            password: req.body?.password,
           }),
           headers: {
             "Content-Type": "application/json",

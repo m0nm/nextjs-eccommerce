@@ -39,16 +39,16 @@ function Register() {
     // check if user already exists
     if (res.status === 422) {
       setUserExist(true);
-    } else {
-      setUserExist(false);
-
-      signIn("credentials", {
-        email: user.email,
-        password: user.password,
-
-        callbackUrl: `${window.location.origin}`,
-      });
     }
+
+    setUserExist(false);
+
+    signIn("credentials", {
+      email: user.email,
+      password: user.password,
+
+      callbackUrl: `${window.location.origin}`,
+    });
   };
 
   return (

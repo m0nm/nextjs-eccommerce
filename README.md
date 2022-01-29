@@ -6,3 +6,5 @@
   . add credentials provider
   }
 - add cart page
+
+- make it super responsive
