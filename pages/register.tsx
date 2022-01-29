@@ -26,25 +26,20 @@ function Register() {
       password: getValues("password"),
     };
 
-    try {
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
 
-      // check if user already exists
-      if (res.status === 422) {
-        setUserExist(true);
-      } else {
-        setUserExist(false);
-      }
-    } catch (error) {
-      // if user already exists
-      console.log(error);
+    // check if user already exists
+    if (res.status === 422) {
+      setUserExist(true);
+    } else {
+      setUserExist(false);
     }
   };
 
