@@ -8,6 +8,7 @@ import DarkMode from "../components/dark-mode/DarkMode";
 import googleSvg from "../public/svg/google.svg";
 import { registerSchema } from "../schema/Schema";
 import { IFormInputs } from "../interface/Index";
+import { signIn } from "next-auth/react";
 function Register() {
   // react-hook-form
   const {
@@ -40,6 +41,13 @@ function Register() {
       setUserExist(true);
     } else {
       setUserExist(false);
+
+      signIn("credentials", {
+        email: user.email,
+        password: user.password,
+
+        callbackUrl: `${window.location.origin}`,
+      });
     }
   };
 
