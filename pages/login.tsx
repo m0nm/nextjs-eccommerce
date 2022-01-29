@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,14 +10,29 @@ import googleSvg from "../public/svg/google.svg";
 import { loginSchema } from "../schema/Schema";
 
 function Login() {
+  // react hook form
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm<IFormInputs>({
     resolver: yupResolver(loginSchema),
   });
+  // < ------ ------ >
+  const handleSignIn = async () => {
+    const user = {
+      email: getValues("email"),
+      password: getValues("password"),
+    };
 
+    signIn("credentials", {
+      callbackUrl: `${window.location.origin}`,
+
+      user,
+    });
+  };
+  // < ------ ------ >
   return (
     <>
       <Head>
@@ -33,7 +49,7 @@ function Login() {
       <div className="w-screen h-screen grid place-items-center">
         {/* form */}
         <form
-          onSubmit={handleSubmit(() => console.log("first"))}
+          onSubmit={handleSubmit(handleSignIn)}
           className="bg-white dark:bg-zinc-800 px-4 h-[90%] w-[90%] md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
         >
           <h1 className="font-bold text-4xl mb-8">Login</h1>
