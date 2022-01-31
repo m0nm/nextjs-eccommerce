@@ -33,6 +33,12 @@ function Login() {
     });
   };
   // < ------ ------ >
+  const handleGoogle = async () => {
+    await signIn("google", {
+      callbackUrl: `${window.location.origin}`,
+    });
+  };
+  // < ------ ------ >
   return (
     <>
       <Head>
@@ -100,7 +106,10 @@ function Login() {
           </div>
           {/* <----- -----> */}
           {/* google sign-in */}
-          <div className="cursor-pointer p-4 mt-4 h-8 flex items-center border dark:border-0 rounded-2xl">
+          <div
+            onClick={handleGoogle}
+            className="cursor-pointer p-4 mt-4 h-8 flex items-center border dark:border-0 rounded-2xl"
+          >
             <Image
               alt="sign in with google"
               src={googleSvg}

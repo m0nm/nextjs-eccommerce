@@ -17,8 +17,9 @@ function Register() {
     formState: { errors },
     handleSubmit,
   } = useForm<IFormInputs>({ resolver: yupResolver(registerSchema) });
-
+  // < ---- ---- >
   const [userExist, setUserExist] = useState(false);
+  // < ---- ---- >
 
   // create a new user
   const createUser = async () => {
@@ -49,7 +50,14 @@ function Register() {
       callbackUrl: `${window.location.origin}`,
     });
   };
+  // < ---- ---- >
+  const handleGoogle = async () => {
+    await signIn("google", {
+      callbackUrl: `${window.location.origin}`,
+    });
+  };
 
+  // < ---- ---- >
   return (
     <>
       <Head>
@@ -148,7 +156,10 @@ function Register() {
           </div>
           {/* <----- -----> */}
           {/* google sign-in */}
-          <div className="cursor-pointer p-4 mt-10 mb-4 h-8 flex items-center border dark:border-0 rounded-2xl">
+          <div
+            onClick={handleGoogle}
+            className="cursor-pointer p-4 mt-10 mb-4 h-8 flex items-center border dark:border-0 rounded-2xl"
+          >
             <Image
               alt="sign up with google"
               src={googleSvg}
