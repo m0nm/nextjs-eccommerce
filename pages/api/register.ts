@@ -21,6 +21,7 @@ export default async function handler(
 
   if (userExist) {
     res.status(422).send({ message: "User already exist!" });
+    return;
   }
 
   // create a new user
@@ -29,9 +30,11 @@ export default async function handler(
     const user = await User.create({ email, password: hashedPassword });
 
     res.status(201).json({ message: "User created successfully", user });
-  } catch (error) {
+  } catch (error: any) {
     res
       .status(400)
       .json({ message: "Could not create a new user, Please try again" });
+
+    console.log(error.message);
   }
 }

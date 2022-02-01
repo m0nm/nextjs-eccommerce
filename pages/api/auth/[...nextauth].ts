@@ -31,8 +31,9 @@ export default NextAuth({
         });
 
         const user = await res.json();
+        console.log("user: ", user);
 
-        if (user.email) {
+        if (user) {
           return user;
         } else {
           return null;
@@ -48,18 +49,20 @@ export default NextAuth({
 
   callbacks: {
     async jwt({ token }) {
-      await dbConnect();
-
-      // add a cart property to the user object who signed up with google provider
-      const googleUser = await User.findOne({ email: token?.email }).then(
-        async (doc) => {
-          if (!doc.cart) {
-            doc.set("cart", [], Array, { strict: false });
-            await doc.save();
-            return doc;
-          }
-        }
-      );
+      await dbConnect()
+        .then(async () => {
+          // add a cart property to the user object who signed up with google provider
+          const googleUser = await User.findOne({ email: token?.email }).then(
+            async (doc) => {
+              if (!doc.cart) {
+                doc.set("cart", [], Array, { strict: false });
+                await doc.save();
+                return doc;
+              }
+            }
+          );
+        })
+        .catch((err) => console.log(err));
 
       return token;
     },

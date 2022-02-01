@@ -10,6 +10,7 @@ export default async function handler(
 
   // find user
   const { email, password } = req.body;
+  console.log("login req.body: ", req.body);
 
   const user = await User.findOne({ email });
 
@@ -20,9 +21,10 @@ export default async function handler(
   const validPassword = await bcrypt.compare(password, user.password);
 
   if (!validPassword) {
-    res.status(400).json({ message: "Password is icorrect!" });
+    res.status(400).json({ message: "Password is incorrect!" });
+    return;
   }
 
   // return user if login is successful
-  res.status(200).json(user);
+  res.status(200).send({ user });
 }
