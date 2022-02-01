@@ -40,12 +40,13 @@ function Register() {
     // check if user already exists
     if (res.status === 422) {
       setUserExist(true);
+      return;
     }
 
     setUserExist(false);
 
-    signIn("credentials", {
-      user,
+    await signIn("credentials", {
+      ...user,
 
       callbackUrl: `${window.location.origin}`,
     });

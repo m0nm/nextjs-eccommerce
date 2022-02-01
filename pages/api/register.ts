@@ -29,7 +29,9 @@ export default async function handler(
     const user = await User.create({ email, password: hashedPassword });
 
     res.status(201).json({ message: "User created successfully", user });
-  } catch (error: unknown) {
-    res.status(400).json({ message: error.message });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Could not create a new user, Please try again" });
   }
 }

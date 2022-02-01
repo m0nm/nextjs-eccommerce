@@ -29,7 +29,7 @@ function Login() {
     signIn("credentials", {
       callbackUrl: `${window.location.origin}`,
 
-      user,
+      ...user,
     });
   };
   // < ------ ------ >

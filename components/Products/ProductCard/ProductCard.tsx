@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useSession } from "next-auth/react";
 import Rating from "react-rating";
 import { IProduct } from "../../../interface/Index";
 import cartSvg from "../../../public/svg/cart.svg";
@@ -14,7 +15,23 @@ function ProductCard({ product }: { product: IProduct }) {
   const emptyStar = (
     <Image alt="empty-star" src={emptyStarSvg} width="22" height="22" />
   );
+  // < ---- ---- >
+  // get user email
+  const { data: session } = useSession();
 
+  // < ---- ---- >
+  // add to cart
+  const addToCartHandler = async () => {
+    const res = await fetch(`/api/cart/${session?.user?.email}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ cartItem: product }),
+    });
+  };
+
+  // < ---- ---- >
   return (
     <div className="dark:bg-[#1b1b1d] flex flex-col w-full md:w-[30%] items-center mx-2 mt-12 border dark:border-0 rounded-lg shadow-xl text-center">
       {/* product image */}
@@ -34,7 +51,7 @@ function ProductCard({ product }: { product: IProduct }) {
       <div className="h-24 w-full flex flex-col items-center">
         {/* product title */}
         <Link href={`/products/${product.id}`}>
-          <a className="text-lg font-semibold h-20">{product.title}</a>
+          <a className="text-lg font-semibold h-20 mx-1">{product.title}</a>
         </Link>
 
         {/* product rate */}
@@ -54,7 +71,10 @@ function ProductCard({ product }: { product: IProduct }) {
       <h1 className="text-4xl font-bold mt-4">${product.price}</h1>
 
       {/* add to cart button */}
-      <button className="h-10 w-full md:w-4/5 px-5 mt-4 mb-8 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800">
+      <button
+        onClick={addToCartHandler}
+        className="h-10 w-full md:w-4/5 px-5 mt-4 mb-8 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800"
+      >
         <span className="mr-2">ADD TO CART</span>
         <Image
           alt="add to cart"

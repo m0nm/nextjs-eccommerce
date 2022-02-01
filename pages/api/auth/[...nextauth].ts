@@ -3,12 +3,14 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongodb";
+import User from "../../../models/User";
+import dbConnect from "../../../lib/dbConnect";
 export default NextAuth({
+  secret: process.env.SECRET,
+
   session: {
     strategy: "jwt",
   },
-
-  secret: process.env.SECRET,
 
   adapter: MongoDBAdapter(clientPromise),
 
@@ -43,4 +45,23 @@ export default NextAuth({
       clientSecret: process.env.CLIENT_SECRET || "",
     }),
   ],
+
+  callbacks: {
+    async jwt({ token }) {
+      await dbConnect();
+
+      // add a cart property to the user object who signed up with google provider
+      const googleUser = await User.findOne({ email: token?.email }).then(
+        async (doc) => {
+          if (!doc.cart) {
+            doc.set("cart", [], Array, { strict: false });
+            await doc.save();
+            return doc;
+          }
+        }
+      );
+
+      return token;
+    },
+  },
 });
