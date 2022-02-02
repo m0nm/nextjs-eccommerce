@@ -1,20 +1,26 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../models/User";
-
+import { ICart } from "../../../interface/Index";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   // connect to db
   await dbConnect();
+  // find the user
+  const { email } = req.query;
+  const user = await User.findOne({ email });
+
+  // if user not found
+  if (!user) {
+    res.status(404).send({ message: "User not found" });
+    return;
+  }
+
   // retrieve user cart
   if (req.method === "GET") {
-    const { email } = req.query;
-
     try {
-      const user = await User.findOne({ email });
-
       res.status(200).send({ cart: user.cart });
     } catch (error) {
       res.status(404).send({ message: "Could not find the user cart" });
@@ -23,21 +29,27 @@ export default async function handler(
 
   // add to cart
   if (req.method === "POST") {
-    await dbConnect();
     try {
-      const { email } = req.query;
-      const { cartItem } = req.body;
-
-      const user = await User.findOne({ email });
+      const { newCartItem } = req.body;
 
       // add a cart to google users
       if (!user.cart) {
         user.cart = [];
-
-        await user.save();
       }
 
-      user.cart.push(cartItem);
+      // check for duplicates and increment quantity
+      for (const cartItem of user.cart) {
+        if (cartItem.title === newCartItem.title) {
+          cartItem.quantity += 1;
+
+          await user.save();
+
+          res.status(200).send({ message: "Product quantity incremented" });
+          return;
+        }
+      }
+
+      user.cart.push(newCartItem);
 
       await user.save();
 

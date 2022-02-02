@@ -4,6 +4,7 @@ import cartSvg from "../../../public/svg/cart.svg";
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { useDetectClickOutside } from "react-detect-click-outside";
+import Link from "next/link";
 function UserCart() {
   // toggle popup
   const [popup, setPopup] = useState(false);
@@ -24,9 +25,11 @@ function UserCart() {
       {/* user and cart   */}
       <div className="flex items-center ml-5">
         {/* cart  */}
-        <div className="relative w-8 h-8 cursor-pointer  dark:invert">
-          <Image alt="cart" layout="fill" src={cartSvg} />
-        </div>
+        <Link href="/cart" passHref>
+          <div className="relative w-8 h-8 cursor-pointer  dark:invert">
+            <Image alt="cart" layout="fill" src={cartSvg} />
+          </div>
+        </Link>
 
         {/* user  */}
         <div

@@ -33,8 +33,12 @@ function ProductCard({ product }: { product: IProduct }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cartItem: product }),
+      body: JSON.stringify({ newCartItem: product }),
     });
+
+    if (res.status === 200) {
+      Router.push("/cart");
+    }
   };
 
   // < ---- ---- >
