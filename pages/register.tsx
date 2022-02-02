@@ -46,7 +46,8 @@ function Register() {
     setUserExist(false);
 
     await signIn("credentials", {
-      ...user,
+      email: user.email,
+      password: user.password,
 
       callbackUrl: `${window.location.origin}`,
     });

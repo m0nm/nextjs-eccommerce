@@ -19,6 +19,7 @@ export default NextAuth({
       credentials: {},
 
       async authorize(credentials, req) {
+        console.log("next-auth: ", req.body);
         const res = await fetch(`${process.env.SERVER}/api/login`, {
           method: "POST",
           body: JSON.stringify({
@@ -31,7 +32,6 @@ export default NextAuth({
         });
 
         const user = await res.json();
-        console.log("user: ", user);
 
         if (user) {
           return user;
@@ -49,20 +49,18 @@ export default NextAuth({
 
   callbacks: {
     async jwt({ token }) {
-      await dbConnect()
-        .then(async () => {
-          // add a cart property to the user object who signed up with google provider
-          const googleUser = await User.findOne({ email: token?.email }).then(
-            async (doc) => {
-              if (!doc.cart) {
-                doc.set("cart", [], Array, { strict: false });
-                await doc.save();
-                return doc;
-              }
-            }
-          );
-        })
-        .catch((err) => console.log(err));
+      await dbConnect();
+
+      // add a cart array to google users
+      const googleUser = await User.findOne({ email: token?.email }).then(
+        async (doc) => {
+          if (!doc.cart) {
+            doc.set("cart", [], Array, { strict: false });
+
+            await doc.save();
+          }
+        }
+      );
 
       return token;
     },

@@ -7,6 +7,7 @@ import { IProduct } from "../../../interface/Index";
 import cartSvg from "../../../public/svg/cart.svg";
 import fullStarSvg from "../../../public/svg/full-star.svg";
 import emptyStarSvg from "../../../public/svg/empty-star.svg";
+import Router from "next/router";
 function ProductCard({ product }: { product: IProduct }) {
   // rating stars
   const fullStar = (
@@ -22,6 +23,11 @@ function ProductCard({ product }: { product: IProduct }) {
   // < ---- ---- >
   // add to cart
   const addToCartHandler = async () => {
+    // redirect the user if not logged in
+    if (!session) {
+      Router.push("/login");
+    }
+
     const res = await fetch(`/api/cart/${session?.user?.email}`, {
       method: "POST",
       headers: {

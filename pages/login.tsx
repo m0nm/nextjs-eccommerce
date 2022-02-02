@@ -27,9 +27,10 @@ function Login() {
     };
 
     signIn("credentials", {
-      callbackUrl: `${window.location.origin}`,
+      email: user.email,
+      password: user.password,
 
-      ...user,
+      callbackUrl: `${window.location.origin}`,
     });
   };
   // < ------ ------ >

@@ -8,23 +8,26 @@ export default async function handler(
 ) {
   await dbConnect();
 
-  // find user
-  const { email, password } = req.body;
-  console.log("login req.body: ", req.body);
+  try {
+    // find user
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-  if (!user) {
-    res.status(404).json({ message: "User does not exist!" });
+    if (!user) {
+      res.status(404).json({ message: "User does not exist!" });
+    }
+
+    const validPassword = await bcrypt.compare(password, user.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: "Password is incorrect!" });
+      return;
+    }
+
+    // return user if login is successful
+    res.status(200).json(user);
+  } catch (error: any) {
+    console.log(error.message);
   }
-
-  const validPassword = await bcrypt.compare(password, user.password);
-
-  if (!validPassword) {
-    res.status(400).json({ message: "Password is incorrect!" });
-    return;
-  }
-
-  // return user if login is successful
-  res.status(200).send({ user });
 }
