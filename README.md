@@ -1,10 +1,11 @@
 # Tasks
 
 - find illustration
-- add add-to-cart api endpoint
-- add cart page
 - make navbar wait for session loading
+- finish cart page
+- add 'cart is empty' paragraph
+- finish cart page delete function
 
 - make it super responsive
-- fix next auth login and register
+
 - hide password from querying in User schema

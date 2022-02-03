@@ -18,7 +18,6 @@ export default NextAuth({
       credentials: {},
 
       async authorize(credentials, req) {
-        console.log("next-auth: ", req.body);
         const res = await fetch(`${process.env.SERVER}/api/login`, {
           method: "POST",
           body: JSON.stringify({

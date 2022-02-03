@@ -21,8 +21,9 @@ export default async function handler(
   // retrieve user cart
   if (req.method === "GET") {
     try {
-      res.status(200).send({ cart: user.cart });
+      res.status(200).send(user.cart);
     } catch (error) {
+      console.log("get cart error: ", error);
       res.status(404).send({ message: "Could not find the user cart" });
     }
   }
@@ -57,6 +58,29 @@ export default async function handler(
     } catch (error: any) {
       res.status(500).send({ message: "An error occured" + error.message });
       console.log(error.message);
+    }
+  }
+
+  // delete from cart
+  if (req.method === "DELETE") {
+    const { item } = req.body;
+
+    try {
+      const newCart = user.cart.filter((cartItem: ICart["0"]) => {
+        if (cartItem.title !== item.title) {
+          return cartItem;
+        }
+      });
+
+      user.cart = newCart;
+      await user.save();
+
+      res.status(200).send({ message: "item deleted successfully" });
+    } catch (error: any) {
+      console.log("delete cart api: ", error.message);
+      res
+        .status(500)
+        .send({ message: "Could not delete the item " + error.message });
     }
   }
 }

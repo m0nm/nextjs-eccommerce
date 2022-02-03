@@ -24,5 +24,5 @@ export type IFormInputs = {
 };
 
 export type ICart = [
-  cart: { _id: string; title: string; quantity: number; price: number }
+  cartItem: { _id: string; title: string; quantity: number; price: number }
 ];
