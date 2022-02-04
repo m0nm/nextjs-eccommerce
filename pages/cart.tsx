@@ -13,9 +13,19 @@ function Cart() {
 
       <Navbar />
 
-      <div className="w-screen h-screen flex flex-col md:flex-row justify-between">
+      <div className="w-screen px-2 h-screen flex flex-col md:flex-row justify-between">
         {/* cart table */}
         <CartTable />
+
+        {/* checkout card */}
+        <div className="bg-white w-1/2 md:w-1/5 h-[40%] mr-6 flex flex-col rounded-lg shadow-lg">
+          <h3 className="text-2xl p-2 text-left mr-auto">Total</h3>
+          <h1 className="text-6xl text-bold text-center mt-4">$285</h1>
+
+          <button className="h-12 w-full md:w-[90%] mb-8 mt-auto mx-auto flex items-center justify-center text-2xl text-white transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800">
+            Buy
+          </button>
+        </div>
       </div>
     </>
   );

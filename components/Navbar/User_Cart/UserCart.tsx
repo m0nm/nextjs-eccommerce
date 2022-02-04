@@ -26,7 +26,7 @@ function UserCart() {
       <div className="flex items-center ml-4 border-l-2 h-full pl-2">
         {/* cart  */}
         <Link href="/cart" passHref>
-          <div className="relative w-8 h-8 cursor-pointer  dark:invert">
+          <div className="relative w-8 h-8 cursor-pointer mr-1 dark:invert">
             <Image alt="cart" layout="fill" src={cartSvg} />
           </div>
         </Link>
@@ -35,7 +35,7 @@ function UserCart() {
         <div
           onClick={() => setPopup(!popup)}
           ref={clickedOutside}
-          className="relative w-8 h-8 cursor-pointer mx-3 dark:invert"
+          className="relative w-7 h-7 cursor-pointer mx-3 dark:invert"
         >
           <Image alt="user" layout="fill" src={userSvg} />
 
