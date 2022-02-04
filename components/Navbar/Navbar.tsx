@@ -29,18 +29,22 @@ function Navbar() {
         {!isMobile && (
           <>
             {/* dark mode  */}
-            <div className="relative w-7 cursor-pointer h-full p-4">
-              <DarkMode />
+            <div className="absolute right-28 h-full">
+              <div className="relative w-8 cursor-pointer h-full">
+                <DarkMode />
+              </div>
             </div>
             {/* login or user/cart */}
             {session ? (
               <UserCart />
             ) : (
-              <Link href="/login" passHref>
-                <div className="ml-6 px-4 h-full grid place-items-center text-2xl tracking-wide border-l-2 dark:border-r-zinc-900 cursor-pointer">
-                  <a>Login</a>
-                </div>
-              </Link>
+              session !== undefined && (
+                <Link href="/login" passHref>
+                  <div className="px-4 h-full grid place-items-center text-2xl border-l-2 tracking-wide dark:border-r-zinc-900 cursor-pointer">
+                    <a>Login</a>
+                  </div>
+                </Link>
+              )
             )}
           </>
         )}
