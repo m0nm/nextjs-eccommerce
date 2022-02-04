@@ -57,7 +57,7 @@ function CartTable() {
   setTotalPrice(parseFloat(totalPrice.toFixed(2)));
   // < ------ * ------ >
   return (
-    <table className="bg-white w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 rounded-md divide-y">
+    <table className="bg-white dark:bg-zinc-800 w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 rounded-md divide-y">
       {/* table head */}
       <thead>
         <tr className="divide-x">
@@ -112,7 +112,7 @@ function CartTable() {
                 </td>
 
                 {/* item name */}
-                <td className="pl-2 md:pl-0">{cartItem.title}</td>
+                <td className="p-2 md:p-0">{cartItem.title}</td>
 
                 {/* item price */}
                 <td className="text-center">${cartItem.price}</td>
@@ -125,7 +125,7 @@ function CartTable() {
                   onClick={() => {
                     deleteItem(cartItem);
                   }}
-                  className="text-center"
+                  className="text-center dark:invert"
                 >
                   <Image
                     className="cursor-pointer"
