@@ -8,6 +8,7 @@ import cartSvg from "../../../public/svg/cart.svg";
 import fullStarSvg from "../../../public/svg/full-star.svg";
 import emptyStarSvg from "../../../public/svg/empty-star.svg";
 import Router from "next/router";
+import { add_to_cart } from "../../../utils/add_to_cart";
 function ProductCard({ product }: { product: IProduct }) {
   // rating stars
   const fullStar = (
@@ -28,15 +29,9 @@ function ProductCard({ product }: { product: IProduct }) {
       Router.push("/login");
     }
 
-    const res = await fetch(`/api/cart/${session?.user?.email}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ newCartItem: product }),
-    });
+    const resStatus = await add_to_cart(session?.user?.email, product);
 
-    if (res.status === 200) {
+    if (resStatus === 200) {
       Router.push("/cart");
     }
   };

@@ -13,7 +13,7 @@ function Cart() {
 
       <Navbar />
 
-      <div className="w-screen h-screen flex justify-between">
+      <div className="w-screen h-screen flex flex-col md:flex-row justify-between">
         {/* cart table */}
         <CartTable />
       </div>

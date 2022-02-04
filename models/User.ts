@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     {
       title: String,
       price: Number,
-
+      image: String,
       quantity: { type: Number, default: 1 },
     },
   ],

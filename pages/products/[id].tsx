@@ -8,7 +8,12 @@ import cartSvg from "../../public/svg/cart.svg";
 import fullStarSvg from "../../public/svg/full-star.svg";
 import emptyStarSvg from "../../public/svg/empty-star.svg";
 import Rating from "react-rating";
+import { useSession } from "next-auth/react";
+import { add_to_cart } from "../../utils/add_to_cart";
+import { useRouter } from "next/router";
+
 function Product({ product }: { product: IProduct }) {
+  // < ---- * ---- >
   // rating stars
   const fullStar = (
     <Image alt="full-star" src={fullStarSvg} width="22" height="22" />
@@ -17,6 +22,29 @@ function Product({ product }: { product: IProduct }) {
     <Image alt="empty-star" src={emptyStarSvg} width="22" height="22" />
   );
 
+  // < ---- * ---- >
+  const router = useRouter();
+
+  // < ---- * ---- >
+  // get user email
+  const { data: session } = useSession();
+
+  // < ---- * ---- >
+  // add to cart
+  const addToCartHandler = async () => {
+    // redirect the user if not logged in
+    if (!session) {
+      router.push("/login");
+    }
+
+    const resStatus = await add_to_cart(session?.user?.email, product);
+
+    if (resStatus === 200) {
+      router.push("/cart");
+    }
+  };
+
+  // < ---- * ---- >
   return (
     <>
       <Head>
@@ -65,7 +93,10 @@ function Product({ product }: { product: IProduct }) {
           <h3 className="text-6xl font-medium mx-auto">$253</h3>
 
           {/* add to cart button */}
-          <button className="h-10 w-full md:w-4/5 px-5 mx-auto my-6 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800">
+          <button
+            onClick={addToCartHandler}
+            className="h-10 w-full md:w-4/5 px-5 mx-auto my-6 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800"
+          >
             <span className="mr-2">ADD TO CART</span>
             <Image
               alt="add to cart"

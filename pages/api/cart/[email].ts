@@ -6,18 +6,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // < ------ * ------ >
   // connect to db
   await dbConnect();
+  // < ------ * ------ >
   // find the user
   const { email } = req.query;
   const user = await User.findOne({ email });
 
+  // < ------ * ------ >
   // if user not found
   if (!user) {
     res.status(404).send({ message: "User not found" });
     return;
   }
 
+  // < ------ * ------ >
   // retrieve user cart
   if (req.method === "GET") {
     try {
@@ -28,6 +32,7 @@ export default async function handler(
     }
   }
 
+  // < ------ * ------ >
   // add to cart
   if (req.method === "POST") {
     try {
@@ -60,7 +65,7 @@ export default async function handler(
       console.log(error.message);
     }
   }
-
+  // < ------ * ------ >
   // delete from cart
   if (req.method === "DELETE") {
     const { item } = req.body;

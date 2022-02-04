@@ -1,5 +1,3 @@
-import { string } from "yup/lib/locale";
-
 export type IProduct = {
   id: number;
   title: string;
@@ -23,6 +21,12 @@ export type IFormInputs = {
   confirmPassword?: string;
 };
 
-export type ICart = [
-  cartItem: { _id: string; title: string; quantity: number; price: number }
-];
+export type ICartItem = {
+  _id: string;
+  title: string;
+  image: string;
+  quantity: number | null;
+  price: number | null;
+};
+
+export type ICart = [ICartItem];
