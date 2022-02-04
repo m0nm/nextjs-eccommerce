@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { ICart } from "../../interface/Index";
+import { ICartItem } from "../../interface/Index";
 import closeSvg from "../../public/svg/close.svg";
 import spinner from "../../public/svg/spinner.gif";
 function CartTable() {
@@ -14,7 +14,7 @@ function CartTable() {
   // update cart when an item is deleted
   const [update, setUpdate] = useState(false);
   // delete an item from cart
-  const deleteItem = async (item: ICart[0]) => {
+  const deleteItem = async (item: ICartItem) => {
     const res = await fetch(`/api/cart/${session?.user?.email}`, {
       method: "DELETE",
       headers: {
@@ -27,7 +27,7 @@ function CartTable() {
   };
   // < ------ * ------ >
   // fetch user cart
-  const [cart, setCart] = useState<ICart>();
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -72,10 +72,18 @@ function CartTable() {
       </thead>
 
       {/* table body */}
-      <tbody className="relative text-lg font-medium divide-y">
-        {cart?.map((cartItem) => {
-          console.log(cartItem);
 
+      <tbody className="relative text-lg font-medium divide-y">
+        {/* check if cart is empty */}
+        {cart.length === 0 && (
+          <Link href="/">
+            <a className="absolute underline left-1/4 top-1/3 text-3xl">
+              Your cart is empty, Go shopping
+            </a>
+          </Link>
+        )}
+
+        {cart?.map((cartItem: ICartItem) => {
           return (
             <>
               <tr key={cartItem._id}>
