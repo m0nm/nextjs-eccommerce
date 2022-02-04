@@ -4,7 +4,7 @@ import Category from "./Category/Category";
 import ProductCard from "./ProductCard/ProductCard";
 import Searchbar from "./Searchbar/Searchbar";
 
-function Products({ products }: IProducts) {
+function Products({ products }: { products: IProducts }) {
   // search for products
   const [search, setSearch] = useState("");
 

@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Products from "../components/Products/Products";
 import { IProducts } from "../interface/Index";
 
-const Home = ({ products }: IProducts) => {
+const Home = ({ products }: { products: IProducts }) => {
   return (
     <>
       <Head>

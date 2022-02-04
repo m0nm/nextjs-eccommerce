@@ -11,9 +11,7 @@ export type IProduct = {
   };
 };
 
-export type IProducts = {
-  products: IProduct[];
-};
+export type IProducts = [IProduct];
 
 export type IFormInputs = {
   email: string;
