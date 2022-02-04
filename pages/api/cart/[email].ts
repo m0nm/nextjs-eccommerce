@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../models/User";
-import { ICart } from "../../../interface/Index";
+import { ICartItem } from "../../../interface/Index";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -71,7 +71,7 @@ export default async function handler(
     const { item } = req.body;
 
     try {
-      const newCart = user.cart.filter((cartItem: ICart["0"]) => {
+      const newCart = user.cart.filter((cartItem: ICartItem) => {
         if (cartItem.title !== item.title) {
           return cartItem;
         }

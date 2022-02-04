@@ -23,8 +23,8 @@ export type ICartItem = {
   _id: string;
   title: string;
   image: string;
-  quantity: number | null;
-  price: number | null;
+  quantity: number;
+  price: number;
 };
 
 export type ICart = [ICartItem];

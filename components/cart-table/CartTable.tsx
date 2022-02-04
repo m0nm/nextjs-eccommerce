@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useStore } from "../../store/store";
 import React, { useEffect, useState } from "react";
 import { ICartItem } from "../../interface/Index";
 import closeSvg from "../../public/svg/close.svg";
@@ -27,7 +28,7 @@ function CartTable() {
   };
   // < ------ * ------ >
   // fetch user cart
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState<ICartItem[]>([]);
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -43,6 +44,17 @@ function CartTable() {
     }
   }, [update, session]);
 
+  // < ------ * ------ >
+  const setTotalPrice = useStore((state) => state.setTotalPrice);
+  // calculate cart total price
+  const totalPrice: number = cart.reduce((total, cartItem) => {
+    total += cartItem.price * cartItem.quantity;
+
+    return total;
+  }, 0);
+
+  console.log("totalPrice: ", totalPrice);
+  setTotalPrice(parseFloat(totalPrice.toFixed(2)));
   // < ------ * ------ >
   return (
     <table className="bg-white w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 rounded-md divide-y">
@@ -103,7 +115,7 @@ function CartTable() {
                 <td className="pl-2 md:pl-0">{cartItem.title}</td>
 
                 {/* item price */}
-                <td className="text-center">{cartItem.price}</td>
+                <td className="text-center">${cartItem.price}</td>
 
                 {/* item quantity */}
                 <td className="text-center">{cartItem.quantity}</td>
