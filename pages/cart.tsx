@@ -13,12 +13,12 @@ function Cart() {
 
       <Navbar />
 
-      <div className="w-screen px-2 h-screen flex flex-col md:flex-row justify-between">
+      <div className="w-screen px-2 h-screen flex flex-col md:flex-row justify-between overflow-x-auto">
         {/* cart table */}
         <CartTable />
 
         {/* checkout card */}
-        <div className="bg-white w-1/2 md:w-1/5 h-[40%] mr-6 flex flex-col rounded-lg shadow-lg">
+        <div className="bg-white w-[90%] md:w-1/3 px-4 md:px-0 md:w-1/5 h-1/3 md:h-[40%] mx-auto mr-6 flex flex-col rounded-lg shadow-lg">
           <h3 className="text-2xl p-2 text-left mr-auto">Total</h3>
           <h1 className="text-6xl text-bold text-center mt-4">$285</h1>
 

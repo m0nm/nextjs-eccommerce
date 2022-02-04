@@ -45,16 +45,16 @@ function CartTable() {
 
   // < ------ * ------ >
   return (
-    <table className="bg-white w-full md:w-4/6 h-1/2 px-2 ml-4 rounded-md divide-y">
+    <table className="bg-white w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 rounded-md divide-y">
       {/* table head */}
       <thead>
         <tr className="divide-x">
           {/* image */}
-          <th scope="col" className="p-2 w-32 text-left">
+          <th scope="col" className="p-2 md:w-32 text-left">
             Image
           </th>
           {/* name */}
-          <th scope="col" className="p-2 text-left w-1/2">
+          <th scope="col" className="p-2 text-left w-1/3 md:w-1/2">
             Name
           </th>
           {/* price */}
@@ -73,7 +73,7 @@ function CartTable() {
 
       {/* table body */}
 
-      <tbody className="relative text-lg font-medium divide-y">
+      <tbody className="relative md:text-lg font-medium divide-y">
         {/* check if cart is empty */}
         {cart.length === 0 && (
           <Link href="/">
@@ -89,7 +89,7 @@ function CartTable() {
               <tr key={cartItem._id}>
                 {/* item image */}
                 <td>
-                  <div className="relative pr-4 w-24 h-32">
+                  <div className="relative my-4 pr-4 w-18 h-24 md:w-24 md:h-32">
                     <Image
                       alt={cartItem.title}
                       src={`${cartItem.image}` || spinner}
@@ -100,7 +100,7 @@ function CartTable() {
                 </td>
 
                 {/* item name */}
-                <td>{cartItem.title}</td>
+                <td className="pl-2 md:pl-0">{cartItem.title}</td>
 
                 {/* item price */}
                 <td className="text-center">{cartItem.price}</td>
