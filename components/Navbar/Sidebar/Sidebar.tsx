@@ -71,13 +71,15 @@ function Sidebar() {
                   </div>
 
                   {/* cart */}
-                  <div className="w-full h-4 text-center cursor-pointer flex items-center">
-                    {/* cart svg */}
-                    <div className="relative w-7 h-7 mr-6 dark:invert">
-                      <Image alt="user" layout="fill" src={cartSvg} />
+                  <Link href="/cart" passHref>
+                    <div className="w-full h-4 text-center cursor-pointer flex items-center">
+                      {/* cart svg */}
+                      <div className="relative w-7 h-7 mr-6 dark:invert">
+                        <Image alt="user" layout="fill" src={cartSvg} />
+                      </div>
+                      <p className="text-2xl">Cart</p>
                     </div>
-                    <p className="text-2xl">Cart</p>
-                  </div>
+                  </Link>
                 </>
               )}
 

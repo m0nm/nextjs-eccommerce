@@ -68,7 +68,7 @@ function Product({ product }: { product: IProduct }) {
         {/* product information */}
         <div className="flex flex-col w-full md:w-3/5 h-full text-center md:text-left">
           {/* product name */}
-          <h1 className="text-4xl font-bold tracking-wide w-full">
+          <h1 className="text-2xl md:text-4xl font-bold tracking-wide w-full">
             {product.title}
           </h1>
 
@@ -87,7 +87,7 @@ function Product({ product }: { product: IProduct }) {
           </div>
 
           {/* product desc */}
-          <p className="text-2xl my-8">{product.description}</p>
+          <p className="text-xl md:text-2xl my-8">{product.description}</p>
 
           {/* product price */}
           <h3 className="text-6xl font-medium mx-auto">$253</h3>

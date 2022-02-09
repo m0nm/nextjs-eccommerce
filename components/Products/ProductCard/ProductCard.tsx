@@ -38,7 +38,7 @@ function ProductCard({ product }: { product: IProduct }) {
 
   // < ---- ---- >
   return (
-    <div className="dark:bg-[#1b1b1d] flex flex-col w-full md:w-[30%] items-center mx-2 mt-12 border dark:border-0 rounded-lg shadow-xl text-center">
+    <div className="dark:bg-[#1b1b1d] flex flex-col w-full md:w-[30%] items-center mx-2 mb-12 border dark:border-0 rounded-lg shadow-xl text-center">
       {/* product image */}
       <Link href={`/products/${product.id}`} passHref>
         <div className="bg-white relative w-full h-80 mb-6 cursor-pointer">
@@ -78,7 +78,7 @@ function ProductCard({ product }: { product: IProduct }) {
       {/* add to cart button */}
       <button
         onClick={addToCartHandler}
-        className="h-10 w-full md:w-4/5 px-5 mt-4 mb-8 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800"
+        className="h-10 w-[90%] md:w-4/5 px-5 mt-4 mb-8 flex items-center justify-center text-white font-medium transition-colors duration-150 bg-blue-900 rounded-lg focus:shadow-outline hover:bg-blue-800"
       >
         <span className="mr-2">ADD TO CART</span>
         <Image

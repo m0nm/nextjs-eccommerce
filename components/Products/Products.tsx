@@ -49,9 +49,9 @@ function Products({ products }: { products: IProducts }) {
       </div>
 
       {/* current category */}
-      <p className="mr-auto ml-2 mt-4 text-lg italic">
+      <h3 className="mr-auto ml-2 my-4 text-lg font-medium italic">
         {category.toUpperCase()}
-      </p>
+      </h3>
 
       {/* Product card */}
       <div className="w-full flex flex-col md:flex-row items-center gap-8 flex-wrap">
