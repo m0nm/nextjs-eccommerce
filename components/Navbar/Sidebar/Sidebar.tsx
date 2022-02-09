@@ -85,9 +85,10 @@ function Sidebar() {
 
               {/* dark mode */}
               <div className="flex justify-between items-center w-full h-6 cursor-pointer">
-                <div className="mt-1 relative h-full w-7">
+                <div className="mt-2">
                   <DarkMode />
                 </div>
+
                 <p className="text-2xl">Switch Theme</p>
               </div>
             </div>

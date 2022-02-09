@@ -29,11 +29,10 @@ function Navbar() {
         {!isMobile && (
           <>
             {/* dark mode  */}
-            <div className="absolute right-28 h-full">
-              <div className="relative w-8 cursor-pointer h-full">
-                <DarkMode />
-              </div>
+            <div className="mr-4">
+              <DarkMode />
             </div>
+
             {/* login or user/cart */}
             {session ? (
               <UserCart />

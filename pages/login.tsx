@@ -47,11 +47,7 @@ function Login() {
       </Head>
 
       {/* dark mode */}
-      <div className="absolute top-2 md:top-4 md:right-4">
-        <div className="relative w-10 cursor-pointer h-10 p-4">
-          <DarkMode />
-        </div>
-      </div>
+      <DarkMode />
 
       <div className="w-screen h-screen grid place-items-center">
         {/* form */}
