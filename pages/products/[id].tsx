@@ -54,9 +54,9 @@ function Product({ product }: { product: IProduct }) {
       {/* navbar */}
       <Navbar />
 
-      <div className="bg-white dark:bg-[#232325] w-[90%] mb-20 flex flex-col md:flex-row justify-between p-6 pt-8 rounded-md shadow-md mx-auto">
+      <div className="bg-white dark:bg-[#232325] w-[90%] flex flex-col md:flex-row justify-between mb-20 p-6 pt-8 rounded-md shadow-md mx-auto">
         {/* product image */}
-        <div className="bg-white relative h-[420px] w-full mb-10 md:w-1/3">
+        <div className="bg-white relative h-[420px] w-full md:w-1/3">
           <Image
             src={product.image}
             alt="product"

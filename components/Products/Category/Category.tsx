@@ -35,7 +35,7 @@ function Category({ setCategory }: IProps) {
 
       {/* popup */}
       {toggle && (
-        <div className="absolute left-56 top-14 md:left-full md:-translate-x-6 md:top-8 w-60 h-44 rounded-sm text-left divide-y dark:divide-slate-200 bg-white dark:bg-[#1b1b1f] shadow-lg z-20 flex flex-col justify-between">
+        <div className="absolute top-14 md:left-full md:-translate-x-6 md:top-8 w-60 h-44 rounded-sm text-left divide-y dark:divide-slate-200 bg-white dark:bg-[#1b1b1f] shadow-lg z-20 flex flex-col justify-between">
           <p
             onClick={() => setCategory("")}
             className="h-10 text-lg w-full px-3 flex items-center hover:bg-slate-100 dark:hover:bg-zinc-900"

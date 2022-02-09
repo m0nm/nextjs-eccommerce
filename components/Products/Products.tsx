@@ -35,7 +35,7 @@ function Products({ products }: { products: IProducts }) {
   });
 
   return (
-    <div className="bg-white dark:bg-zinc-800 flex flex-col items-center w-[90%] min-h-[250px] ml-16 p-6 rounded-md shadow-md">
+    <div className="bg-white dark:bg-zinc-800 flex flex-col items-center w-[90%] min-h-[250px] mx-auto p-6 rounded-md shadow-md">
       {/* header */}
       <h1 className="text-4xl h-24 md:self-start mb-10 bold">Products</h1>
 
@@ -49,7 +49,7 @@ function Products({ products }: { products: IProducts }) {
       </div>
 
       {/* current category */}
-      <h3 className="mr-auto ml-2 my-4 text-lg font-medium italic">
+      <h3 className="md:mr-auto ml-2 my-4 text-lg font-medium italic">
         {category.toUpperCase()}
       </h3>
 
