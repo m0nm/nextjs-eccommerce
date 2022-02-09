@@ -10,9 +10,8 @@
 @tailwind utilities;
 html,
 body {
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
   background: whitesmoke;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
