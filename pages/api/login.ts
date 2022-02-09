@@ -12,7 +12,7 @@ export default async function handler(
     // find user
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user) {
       res.status(404).json({ message: "User does not exist!" });
