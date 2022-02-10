@@ -78,7 +78,7 @@ function Register() {
           onSubmit={handleSubmit(createUser)}
           className="bg-white dark:bg-zinc-800 h-[85%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg"
         >
-          <h1 className="text-4xl font-semibold">Sign Up</h1>
+          <h1 className="text-3xl font-bold">Sign Up</h1>
 
           {/* <----- -----> */}
           {userExist && (
@@ -175,7 +175,7 @@ function Register() {
           {/* <----- -----> */}
           {/* already have an account */}
           <Link href="/login">
-            <a className="underline">Already have an account ? Login</a>
+            <a className="my-4 underline">Already have an account ? Login</a>
           </Link>
         </form>
       </div>

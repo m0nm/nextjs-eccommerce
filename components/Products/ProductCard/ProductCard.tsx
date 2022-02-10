@@ -56,11 +56,13 @@ function ProductCard({ product }: { product: IProduct }) {
       <div className="h-24 w-full flex flex-col items-center">
         {/* product title */}
         <Link href={`/products/${product.id}`}>
-          <a className="text-lg font-semibold h-20 mx-1">{product.title}</a>
+          <a className="truncate w-[97%] text-lg font-semibold mx-1">
+            {product.title}
+          </a>
         </Link>
 
         {/* product rate */}
-        <div>
+        <div className="mt-2">
           <Rating
             readonly
             quiet
@@ -73,7 +75,7 @@ function ProductCard({ product }: { product: IProduct }) {
       </div>
 
       {/* product price */}
-      <h1 className="text-4xl font-bold mt-4">${product.price}</h1>
+      <h1 className="text-4xl font-bold ">${product.price}</h1>
 
       {/* add to cart button */}
       <button

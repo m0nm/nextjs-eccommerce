@@ -54,7 +54,7 @@ function Product({ product }: { product: IProduct }) {
       {/* navbar */}
       <Navbar />
 
-      <div className="bg-white dark:bg-[#232325] w-[90%] flex flex-col md:flex-row justify-between mb-20 p-6 pt-8 rounded-md shadow-md mx-auto">
+      <div className="bg-white dark:bg-[#232325] w-[90%] flex flex-col md:flex-row justify-between pt-4 mb-20 rounded-md shadow-md mx-auto">
         {/* product image */}
         <div className="bg-white relative h-[420px] w-full md:w-1/3">
           <Image
@@ -66,14 +66,14 @@ function Product({ product }: { product: IProduct }) {
         </div>
 
         {/* product information */}
-        <div className="flex flex-col w-full md:w-3/5 h-full text-center md:text-left">
+        <div className="flex flex-col w-full md:w-3/5 h-full px-2 md:text-left">
           {/* product name */}
-          <h1 className="text-2xl md:text-4xl font-bold tracking-wide w-full">
+          <h1 className="text-2xl md:text-4xl font-bold mt-3 md:mt-0 tracking-wide w-full">
             {product.title}
           </h1>
 
           {/* product rate */}
-          <div className="mt-6 mx-auto md:mx-0 text-left flex items-center">
+          <div className="mt-6 text-left flex items-center">
             <Rating
               readonly
               quiet
@@ -87,7 +87,9 @@ function Product({ product }: { product: IProduct }) {
           </div>
 
           {/* product desc */}
-          <p className="text-xl md:text-2xl my-8">{product.description}</p>
+          <p className="text-xl leading-7 md:text-2xl my-8">
+            {product.description}
+          </p>
 
           {/* product price */}
           <h3 className="text-6xl font-medium mx-auto">$253</h3>

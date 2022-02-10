@@ -29,7 +29,7 @@ function Navbar() {
         {!isMobile && (
           <>
             {/* dark mode  */}
-            <div className="mr-4">
+            <div className="mr-2">
               <DarkMode />
             </div>
 
@@ -39,7 +39,7 @@ function Navbar() {
             ) : (
               session !== undefined && (
                 <Link href="/login" passHref>
-                  <div className="px-4 h-full grid place-items-center text-2xl border-l-2 tracking-wide dark:border-r-zinc-900 cursor-pointer">
+                  <div className="px-4 ml-2 h-full grid place-items-center text-2xl border-l-2 tracking-wide dark:border-r-zinc-900 cursor-pointer">
                     <a>Login</a>
                   </div>
                 </Link>

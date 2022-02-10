@@ -18,7 +18,7 @@ function Searchbar({ setSearch, setCategory }: IProps) {
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
-      className="w-full md:w-1/5 h-10 flex justify-between items-center border px-2 py-2 mb-4 shadow-sm rounded-2xl dark:focus-within:bg-[#222227] dark:bg-[#1b1b1f]"
+      className="w-full lg:w-1/4 md:w-1/5 h-10 flex justify-between items-center border px-2 py-2 mb-4 shadow-sm rounded-2xl dark:focus-within:bg-[#222227] dark:bg-[#1b1b1f]"
     >
       {/* input */}
       <input

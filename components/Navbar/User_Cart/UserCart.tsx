@@ -23,7 +23,7 @@ function UserCart() {
   return (
     <>
       {/* user and cart   */}
-      <div className="flex items-center ml-4 border-l-2 h-full pl-2">
+      <div className="flex items-center ml-2 border-l dark:border-l-zinc-600 h-full pl-2">
         {/* cart  */}
         <Link href="/cart" passHref>
           <div className="relative w-8 h-8 cursor-pointer mr-1 dark:invert">

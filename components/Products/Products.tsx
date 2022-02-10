@@ -54,7 +54,7 @@ function Products({ products }: { products: IProducts }) {
       </h3>
 
       {/* Product card */}
-      <div className="w-full flex flex-col md:flex-row items-center gap-8 flex-wrap">
+      <div className="w-full flex flex-col md:flex-row items-center gap-8 lg:gap-3 flex-wrap">
         {filteredProducts.map((product) => {
           return <ProductCard product={product} key={product.id} />;
         })}

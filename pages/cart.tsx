@@ -16,14 +16,14 @@ function Cart() {
 
       <Navbar />
 
-      <div className="w-full px-2 h-screen flex flex-col md:flex-row md:justify-between">
+      <div className="w-full px-2 min-h-screen flex flex-col md:flex-row md:justify-between">
         {/* cart table */}
         <CartTable />
 
         {/* checkout card */}
-        <div className="bg-white dark:bg-zinc-800 w-[90%]  px-4 md:px-0 md:w-1/5 h-1/2 md:h-[40%] mx-auto md:mr-6 mt-8 flex flex-col rounded-lg shadow-lg">
+        <div className="bg-white dark:bg-zinc-800 w-[90%] md:w-1/5 md:h-[280px] px-2 mx-auto mt-8 md:mt-0 mb-24 md:mr-6 flex flex-col rounded-lg shadow-md">
           <h3 className="text-2xl p-2 text-left mr-auto">Total</h3>
-          <h1 className="text-6xl text-bold text-center mb-8 md:mb-0 mt-4">
+          <h1 className="text-5xl text-bold text-center mb-8 md:mb-0 mt-4">
             ${totalPrice}
           </h1>
 

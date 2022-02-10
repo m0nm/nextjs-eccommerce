@@ -57,10 +57,10 @@ function CartTable() {
   setTotalPrice(parseFloat(totalPrice.toFixed(2)));
   // < ------ * ------ >
   return (
-    <table className="bg-white dark:bg-zinc-800 w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 rounded-md divide-y">
+    <table className="bg-white dark:bg-zinc-800 w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 mb-20 rounded-md shadow-md divide-y dark:divide-zinc-500">
       {/* table head */}
       <thead>
-        <tr className="divide-x">
+        <tr className="divide-x dark:divide-zinc-500">
           {/* image */}
           <th scope="col" className="p-2 md:w-32 text-left">
             Image
@@ -85,11 +85,11 @@ function CartTable() {
 
       {/* table body */}
 
-      <tbody className="relative md:text-lg font-medium divide-y">
+      <tbody className="relative md:text-lg font-medium divide-y dark:divide-zinc-500">
         {/* check if cart is empty */}
         {cart.length === 0 && (
           <Link href="/">
-            <a className="absolute underline left-1/4 top-1/3 text-3xl">
+            <a className="absolute mt-10 md:mt-20 text-center underline w-full text-lg md:text-3xl">
               Your cart is empty, Go shopping
             </a>
           </Link>
