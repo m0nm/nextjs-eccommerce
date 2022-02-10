@@ -76,19 +76,25 @@ function Register() {
         {/* form */}
         <form
           onSubmit={handleSubmit(createUser)}
-          className="bg-white dark:bg-gray-800 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg"
+          className="bg-white dark:bg-zinc-800 h-[85%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg"
         >
           <h1 className="text-4xl font-semibold">Sign Up</h1>
 
+          {/* <----- -----> */}
+          {userExist && (
+            <p className="text-red-500 text-lg">User Already Exist!</p>
+          )}
+
+          {/* <----- -----> */}
           {/* input fields */}
-          <div className="min-h-[33%] w-full flex flex-col justify-between items-center">
+          <div className="min-h-[38%] w-full flex flex-col justify-between items-center">
             {/* email */}
             <div className="w-4/5">
-              <label htmlFor="email" className="text-sm italic block">
+              <label htmlFor="email" className="ml-1 text-sm italic block">
                 Email
               </label>
 
-              <p className="text-red-500 text-md mr-auto">
+              <p className="text-red-500 text-md ml-1 mr-auto">
                 {errors.email?.message}
               </p>
               <input
@@ -97,7 +103,7 @@ function Register() {
                   errors.email
                     ? "border-red-500"
                     : "border-slate-600 focus:border-blue-800"
-                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
+                } w-full py-1 px-3 font-medium border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
 
@@ -107,17 +113,18 @@ function Register() {
                 Password
               </label>
 
-              <p className="text-red-500 text-md mr-auto">
+              <p className="text-red-500 text-md ml-1 mr-auto">
                 {errors.password?.message}
               </p>
 
               <input
+                type="password"
                 {...register("password")}
                 className={`${
-                  errors.email
+                  errors.password
                     ? "border-red-500"
                     : "border-slate-600 focus:border-blue-800"
-                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
+                } w-full py-1 px-3 font-medium border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
 
@@ -129,40 +136,45 @@ function Register() {
               >
                 Confirm Password
               </label>
-              <p className="text-red-500 text-md mr-auto">
+              <p className="text-red-500 text-md ml-1 mr-auto">
                 {errors.confirmPassword?.message}
               </p>
               <input
+                type="password"
                 {...register("confirmPassword")}
                 className={`${
-                  errors.email
+                  errors.confirmPassword
                     ? "border-red-500"
                     : "border-slate-600 focus:border-blue-800"
-                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
+                } w-full py-1 px-3 font-medium border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
           </div>
 
+          {/* <----- -----> */}
           {/* google sign in */}
           <div
             onClick={handleGoogle}
-            className="flex items-center border rounded-2xl py-1 px-4 text-center cursor-pointer"
+            className="flex items-center border border-slate-300 dark:border-slate-500 rounded-2xl py-1 px-4 text-center cursor-pointer"
           >
-            <p className="mr-2">Continue with Google</p>
             <Image
               src={googleSvg}
               alt="continue with google"
               width="17"
               height="17"
             />
+            <p className="ml-2">Continue with Google</p>
           </div>
 
-          <button className="w-4/5 bg-blue-600 py-1 font-medium text-lg text-white rounded-md">
-            Sign Up
+          {/* <----- -----> */}
+          {/* sign up button */}
+          <button className="py-2 w-56 rounded-lg grid place-items-center bg-blue-900 hover:bg-blue-800 text-white">
+            <h1 className="text-xl font-medium">Sign Up</h1>
           </button>
 
+          {/* <----- -----> */}
           {/* already have an account */}
-          <Link href="#login">
+          <Link href="/login">
             <a className="underline">Already have an account ? Login</a>
           </Link>
         </form>

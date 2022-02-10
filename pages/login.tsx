@@ -107,23 +107,22 @@ function Login() {
           {/* google sign-in */}
           <div
             onClick={handleGoogle}
-            className="cursor-pointer p-4 mt-4 h-8 flex items-center border dark:border-0 rounded-2xl"
+            className="cursor-pointer p-4 mt-4 h-8 flex items-center border border-slate-300 dark:border-slate-500 rounded-2xl"
           >
             <Image
               alt="sign in with google"
               src={googleSvg}
-              width="20"
-              height="20"
+              width="17"
+              height="17"
             />
-            <a className="ml-3" href="#">
-              Continue with google
-            </a>
+            <p className="ml-2">Continue with google</p>
           </div>
           {/* <----- -----> */}
           {/* Login button */}
-          <button className="h-12 w-56 rounded-lg grid place-items-center bg-blue-900 hover:bg-blue-800 text-white">
+          <button className="py-2 w-56 rounded-lg grid place-items-center bg-blue-900 hover:bg-blue-800 text-white">
             <h1 className="text-xl font-medium">Login</h1>
           </button>
+
           {/* <----- -----> */}
           {/* register */}
           <Link passHref href="/register">
