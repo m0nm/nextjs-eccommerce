@@ -67,14 +67,12 @@ function Register() {
       </Head>
 
       {/* dark mode */}
-      <div className="absolute top-6 md:top-4 md:right-4">
-        <div className="relative w-10 cursor-pointer h-10">
-          <DarkMode />
-        </div>
+      <div className="absolute top-4 right-4">
+        <DarkMode />
       </div>
 
       {/* form */}
-      <div className="w-screen h-screen grid place-items-center">
+      <div className="w-full h-screen grid place-items-center mt-4">
         {/* form */}
         <form
           onSubmit={handleSubmit(createUser)}

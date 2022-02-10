@@ -47,15 +47,17 @@ function Login() {
       </Head>
 
       {/* dark mode */}
-      <DarkMode />
+      <div className="absolute top-4 right-4">
+        <DarkMode />
+      </div>
 
-      <div className="w-screen h-screen grid place-items-center">
+      <div className="w-full h-screen grid place-items-center">
         {/* form */}
         <form
           onSubmit={handleSubmit(handleSignIn)}
-          className="bg-white dark:bg-zinc-800 px-4 h-[90%] w-[90%] md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
+          className="bg-white dark:bg-zinc-800 px-4 h-3/4 md:h-[90%] w-[90%] md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
         >
-          <h1 className="font-bold text-4xl mb-8">Login</h1>
+          <h1 className="font-bold text-4xl mt-4 md:mt-0 mb-8">Login</h1>
 
           {/* input fields */}
           <div className="h-1/4 md:h-1/5 w-full flex flex-col justify-between items-center">

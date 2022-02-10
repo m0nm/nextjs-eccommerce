@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import moonSvg from "../../public/svg/moon.svg";
 import sunSvg from "../../public/svg/sun.svg";
 
-function DarkMode() {
+function DarkMode({ onSidebar }: { onSidebar?: boolean }) {
   // increase the clickable area if on mobile
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
@@ -23,8 +23,9 @@ function DarkMode() {
   };
   return (
     <div
-      className={`relative w-8 h-8
-      ${isMobile && "w-7 h-7 before:w-48 before:h-6 before:absolute"}`}
+      className={`cursor-pointer relative w-8 h-8
+      ${isMobile && "w-7 h-7"} 
+      ${onSidebar && "before:w-48 before:h-6 before:absolute"}`}
       onClick={switchTheme}
     >
       {theme === "light" ? (
