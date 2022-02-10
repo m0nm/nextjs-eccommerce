@@ -74,7 +74,10 @@ function Register() {
       {/* register form */}
       <div className="h-screen w-full grid place-items-center mt-4 md:mt-0">
         {/* form */}
-        <form className="bg-white dark:bg-gray-800 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg">
+        <form
+          onSubmit={handleSubmit(createUser)}
+          className="bg-white dark:bg-gray-800 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg"
+        >
           <h1 className="text-4xl font-semibold">Sign Up</h1>
 
           {/* input fields */}
