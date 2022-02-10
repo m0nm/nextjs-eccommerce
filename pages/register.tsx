@@ -74,7 +74,7 @@ function Register() {
       {/* register form */}
       <div className="h-screen w-full grid place-items-center mt-4 md:mt-0">
         {/* form */}
-        <form className="bg-white dark:bg-slate-900 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg">
+        <form className="bg-white dark:bg-gray-800 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg">
           <h1 className="text-4xl font-semibold">Sign Up</h1>
 
           {/* input fields */}
@@ -84,9 +84,17 @@ function Register() {
               <label htmlFor="email" className="text-sm italic block">
                 Email
               </label>
+
+              <p className="text-red-500 text-md mr-auto">
+                {errors.email?.message}
+              </p>
               <input
-                type="email"
-                className="dark:bg-zinc-800 w-full border rounded-2xl font-medium py-1 px-3"
+                {...register("email")}
+                className={`${
+                  errors.email
+                    ? "border-red-500"
+                    : "border-slate-600 focus:border-blue-800"
+                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
 
@@ -95,9 +103,18 @@ function Register() {
               <label htmlFor="password" className="ml-1 text-sm italic block">
                 Password
               </label>
+
+              <p className="text-red-500 text-md mr-auto">
+                {errors.password?.message}
+              </p>
+
               <input
-                type="password"
-                className="w-full border-2 rounded-2xl font-medium py-1 px-3"
+                {...register("password")}
+                className={`${
+                  errors.email
+                    ? "border-red-500"
+                    : "border-slate-600 focus:border-blue-800"
+                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
 
@@ -109,9 +126,16 @@ function Register() {
               >
                 Confirm Password
               </label>
+              <p className="text-red-500 text-md mr-auto">
+                {errors.confirmPassword?.message}
+              </p>
               <input
-                type="password"
-                className="w-full border-2 rounded-2xl font-medium py-1 px-3"
+                {...register("confirmPassword")}
+                className={`${
+                  errors.email
+                    ? "border-red-500"
+                    : "border-slate-600 focus:border-blue-800"
+                } w-full py-1 px-3 border dark:border-0 rounded-2xl duration-150`}
               />
             </div>
           </div>
@@ -135,9 +159,9 @@ function Register() {
           </button>
 
           {/* already have an account */}
-          <a href="#" className="underline">
-            Already have an account ? Login
-          </a>
+          <Link href="#login">
+            <a className="underline">Already have an account ? Login</a>
+          </Link>
         </form>
       </div>
     </>
