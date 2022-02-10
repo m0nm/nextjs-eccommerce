@@ -71,119 +71,73 @@ function Register() {
         <DarkMode />
       </div>
 
-      {/* form */}
-      <div className="w-full h-screen grid place-items-center mt-4">
+      {/* register form */}
+      <div className="h-screen w-full grid place-items-center mt-4 md:mt-0">
         {/* form */}
-        <form
-          onSubmit={handleSubmit(createUser)}
-          className="bg-white dark:bg-zinc-800 px-4 h-[90%] w-4/5 md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
-        >
-          <h1 className="font-bold text-4xl mb-10 mt-8">Sign Up</h1>
+        <form className="bg-white dark:bg-slate-900 h-[90%] w-4/5 md:w-1/3 py-6 flex flex-col justify-between items-center rounded-xl shadow-lg">
+          <h1 className="text-4xl font-semibold">Sign Up</h1>
 
-          {userExist && (
-            <p className="text-red-500 text-lg mb-4">User Already Exist!</p>
-          )}
           {/* input fields */}
-          <div className="h-1/3 w-full flex flex-col justify-between items-center">
+          <div className="min-h-[33%] w-full flex flex-col justify-between items-center">
             {/* email */}
-            <div className="relative w-[90%] h-8">
-              <p className="text-red-500 text-md mr-auto">
-                {errors.email?.message}
-              </p>
-              <input
-                {...register("email")}
-                className={`${
-                  errors.email
-                    ? "border-red-500"
-                    : "border-slate-600 focus:border-blue-800"
-                } w-full h-full px-4 border dark:border-0 rounded-md duration-150`}
-              />
-
-              <label
-                className="absolute top-0 -translate-y-full left-0 ml-1 italic text-sm"
-                htmlFor="email"
-              >
+            <div className="w-4/5">
+              <label htmlFor="email" className="text-sm italic block">
                 Email
               </label>
+              <input
+                type="email"
+                className="dark:bg-zinc-800 w-full border rounded-2xl font-medium py-1 px-3"
+              />
             </div>
 
-            {/* <----- -----> */}
             {/* password */}
-            <div className="relative w-[90%] h-8">
-              <p className="text-red-500 text-md mr-auto w-full">
-                {errors.password?.message}
-              </p>
-              <input
-                {...register("password")}
-                className={`${
-                  errors.password
-                    ? "border-red-500"
-                    : "border-slate-600 focus:border-blue-800"
-                } w-full h-full px-4 border dark:border-0 rounded-md duration-150`}
-                type="password"
-              />
-
-              <label
-                className="absolute top-0 -translate-y-full left-0 ml-1 italic text-sm"
-                htmlFor="password"
-              >
+            <div className="w-4/5">
+              <label htmlFor="password" className="ml-1 text-sm italic block">
                 Password
               </label>
-            </div>
-            {/* <----- -----> */}
-            {/* confirm password */}
-            <div className="relative w-[90%] h-8">
-              <p className="text-red-500 text-md mr-auto">
-                {errors.confirmPassword?.message}
-              </p>
               <input
-                {...register("confirmPassword")}
-                className={`${
-                  errors.confirmPassword
-                    ? "border-red-500"
-                    : "border-slate-600 focus:border-blue-800"
-                } w-full h-full px-4 border dark:border-0 rounded-md duration-150`}
                 type="password"
+                className="w-full border-2 rounded-2xl font-medium py-1 px-3"
               />
+            </div>
 
+            {/* confirm password */}
+            <div className="w-4/5">
               <label
-                className="absolute top-0 -translate-y-full left-0 ml-1 italic text-sm"
                 htmlFor="confirmPassword"
+                className="ml-1 text-sm italic block"
               >
                 Confirm Password
               </label>
+              <input
+                type="password"
+                className="w-full border-2 rounded-2xl font-medium py-1 px-3"
+              />
             </div>
           </div>
-          {/* <----- -----> */}
-          {/* google sign-in */}
+
+          {/* google sign in */}
           <div
             onClick={handleGoogle}
-            className="cursor-pointer p-4 mt-10 mb-4 h-8 flex items-center border dark:border-0 rounded-2xl"
+            className="flex items-center border rounded-2xl py-1 px-4 text-center cursor-pointer"
           >
+            <p className="mr-2">Continue with Google</p>
             <Image
-              alt="sign up with google"
               src={googleSvg}
-              width="20"
-              height="20"
+              alt="continue with google"
+              width="17"
+              height="17"
             />
-            <a className="ml-3" href="#">
-              Continue with google
-            </a>
           </div>
-          {/* <----- -----> */}
-          {/* Login button */}
-          <button className="h-12 w-56 rounded-lg grid place-items-center bg-blue-900 hover:bg-blue-800 text-white">
-            <h1 className="text-xl font-medium">Sign Up</h1>
+
+          <button className="w-4/5 bg-blue-600 py-1 font-medium text-lg text-white rounded-md">
+            Sign Up
           </button>
-          {/* <----- -----> */}
-          {/* register */}
-          <Link passHref href="/login">
-            <div className="mb-20 mt-4">
-              <a href="#" className=" dark:text-slate-200 underline">
-                Already have an account ? Login
-              </a>
-            </div>
-          </Link>
+
+          {/* already have an account */}
+          <a href="#" className="underline">
+            Already have an account ? Login
+          </a>
         </form>
       </div>
     </>
