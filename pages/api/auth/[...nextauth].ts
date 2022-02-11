@@ -31,10 +31,10 @@ export default NextAuth({
 
         const user = await res.json();
 
-        if (user) {
+        if (res.status === 200) {
           return user;
         } else {
-          return null;
+          return;
         }
       },
     }),
@@ -44,4 +44,9 @@ export default NextAuth({
       clientSecret: process.env.CLIENT_SECRET || "",
     }),
   ],
+
+  pages: {
+    signIn: "/login",
+    error: "/login",
+  },
 });

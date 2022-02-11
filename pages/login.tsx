@@ -3,6 +3,8 @@ import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import DarkMode from "../components/dark-mode/DarkMode";
 import { IFormInputs } from "../interface/Index";
@@ -20,6 +22,8 @@ function Login() {
     resolver: yupResolver(loginSchema),
   });
   // < ------ ------ >
+  // display error message if login failed
+  const { error } = useRouter().query;
   const handleSignIn = async () => {
     const user = {
       email: getValues("email"),
@@ -58,7 +62,11 @@ function Login() {
           className="bg-white dark:bg-zinc-800 px-4 h-3/4 md:h-[90%] w-[90%] md:w-1/3 flex flex-col items-center justify-between md:justify-evenly rounded-lg shadow-lg"
         >
           <h1 className="font-bold text-3xl mt-4 md:mt-0 mb-8">Login</h1>
-
+          {error && (
+            <p className="text-xl font-medium text-red-500">
+              Please verify your email or password
+            </p>
+          )}
           {/* input fields */}
           <div className="h-1/4 md:h-1/5 w-full flex flex-col justify-between items-center">
             {/* email */}

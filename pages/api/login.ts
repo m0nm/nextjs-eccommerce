@@ -28,7 +28,7 @@ export default async function handler(
     // return user if login is successful
     res.status(200).json(user);
   } catch (error: any) {
-    res.status(400).json({ message: "user authentication failed" });
+    res.status(500).json({ message: "user authentication failed" });
     console.log("login api " + error.message);
   }
 }

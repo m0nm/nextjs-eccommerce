@@ -82,7 +82,9 @@ function Register() {
 
           {/* <----- -----> */}
           {userExist && (
-            <p className="text-red-500 text-lg">User Already Exist!</p>
+            <p className="text-red-500 text-xl font-medium">
+              User Already Exist!
+            </p>
           )}
 
           {/* <----- -----> */}
