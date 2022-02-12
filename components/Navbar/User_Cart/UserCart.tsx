@@ -1,10 +1,12 @@
 import Image from "next/image";
-import userSvg from "../../../public/svg/user.svg";
-import cartSvg from "../../../public/svg/cart.svg";
+import Link from "next/link";
+
 import { useState } from "react";
 import { signOut } from "next-auth/react";
 import { useDetectClickOutside } from "react-detect-click-outside";
-import Link from "next/link";
+
+import cartSvg from "../../../public/svg/cart.svg";
+import userSvg from "../../../public/svg/user.svg";
 function UserCart() {
   // toggle popup
   const [popup, setPopup] = useState(false);

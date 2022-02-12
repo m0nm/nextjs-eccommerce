@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { IProducts } from "../../interface/Index";
+import { IProduct } from "../../interface/Index";
+
 import Category from "./Category/Category";
 import ProductCard from "./ProductCard/ProductCard";
 import Searchbar from "./Searchbar/Searchbar";
 
-function Products({ products }: { products: IProducts }) {
+function Products({ products }: { products: IProduct[] }) {
   // search for products
   const [search, setSearch] = useState("");
 

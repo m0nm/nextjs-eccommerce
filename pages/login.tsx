@@ -1,15 +1,19 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+
 import DarkMode from "../components/dark-mode/DarkMode";
-import { IFormInputs } from "../interface/Index";
-import googleSvg from "../public/svg/google.svg";
+
+import { yupResolver } from "@hookform/resolvers/yup";
 import { loginSchema } from "../schema/Schema";
+
+import { IFormInputs } from "../interface/Index";
+
+import googleSvg from "../public/svg/google.svg";
 
 function Login() {
   // react hook form
@@ -71,10 +75,9 @@ function Login() {
           <div className="h-1/4 md:h-1/5 w-full flex flex-col justify-between items-center">
             {/* email */}
             <div className="w-[90%] h-8">
-              <label htmlFor="email" className="ml-1 text-sm italic block">
+              <label htmlFor="email" className="ml-1 text-sm">
                 Email
               </label>
-
               <p className="text-red-500 text-md">{errors.email?.message}</p>
 
               <input
@@ -82,7 +85,7 @@ function Login() {
                   errors.email
                     ? "border-red-500"
                     : "border-slate-600 focus:border-blue-800"
-                } w-full h-full px-4 border dark:border-0 rounded-2xl duration-150`}
+                } w-full h-full font-medium px-4 border dark:border-0 rounded-2xl duration-150`}
                 {...register("email")}
               />
             </div>
@@ -90,7 +93,7 @@ function Login() {
             {/* <----- -----> */}
             {/* password */}
             <div className="w-[90%] h-8">
-              <label htmlFor="password" className="ml-1 text-sm italic block">
+              <label htmlFor="password" className="ml-1 text-sm">
                 Password
               </label>
 
@@ -101,7 +104,7 @@ function Login() {
                   errors.password
                     ? "border-red-500"
                     : "border-slate-600 focus:border-blue-800"
-                } w-full h-full px-4 border dark:border-0 rounded-2xl duration-150`}
+                } w-full h-full font-medium px-4 border dark:border-0 rounded-2xl duration-150`}
                 type="password"
                 {...register("password")}
               />

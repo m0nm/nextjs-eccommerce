@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { useSession, signOut } from "next-auth/react";
@@ -7,7 +8,6 @@ import menuSvg from "../../../public/svg/menu.svg";
 import userSvg from "../../../public/svg/user.svg";
 import cartSvg from "../../../public/svg/cart.svg";
 import DarkMode from "../../dark-mode/DarkMode";
-import Link from "next/link";
 
 function Sidebar() {
   // toggle popup

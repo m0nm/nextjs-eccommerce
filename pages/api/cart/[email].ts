@@ -27,7 +27,6 @@ export default async function handler(
     try {
       res.status(200).send(user.cart);
     } catch (error) {
-      console.log("get cart error: ", error);
       res.status(404).send({ message: "Could not find the user cart" });
     }
   }
@@ -60,9 +59,8 @@ export default async function handler(
       await user.save();
 
       res.status(200).send({ message: "Cart item saved" + user.cart });
-    } catch (error: any) {
-      res.status(500).send({ message: "An error occured" + error.message });
-      console.log(error.message);
+    } catch (error) {
+      res.status(500).send({ message: "An error occured" });
     }
   }
   // < ------ * ------ >
@@ -82,10 +80,7 @@ export default async function handler(
 
       res.status(200).send({ message: "item deleted successfully" });
     } catch (error: any) {
-      console.log("delete cart api: ", error.message);
-      res
-        .status(500)
-        .send({ message: "Could not delete the item " + error.message });
+      res.status(500).send({ message: "Could not delete the item" });
     }
   }
 }

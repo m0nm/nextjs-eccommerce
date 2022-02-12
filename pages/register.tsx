@@ -1,11 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import DarkMode from "../components/dark-mode/DarkMode";
 import googleSvg from "../public/svg/google.svg";
+
 import { registerSchema } from "../schema/Schema";
 import { IFormInputs } from "../interface/Index";
 import { signIn } from "next-auth/react";

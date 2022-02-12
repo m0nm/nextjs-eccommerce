@@ -1,10 +1,12 @@
 import type { GetStaticProps } from "next";
 import Head from "next/head";
+
 import Navbar from "../components/Navbar/Navbar";
 import Products from "../components/Products/Products";
-import { IProducts } from "../interface/Index";
 
-const Home = ({ products }: { products: IProducts }) => {
+import { IProduct } from "../interface/Index";
+
+const Home = ({ products }: { products: IProduct[] }) => {
   return (
     <>
       <Head>

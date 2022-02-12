@@ -11,8 +11,6 @@ export type IProduct = {
   };
 };
 
-export type IProducts = [IProduct];
-
 export type IFormInputs = {
   email: string;
   password: string;
@@ -26,5 +24,3 @@ export type ICartItem = {
   quantity: number;
   price: number;
 };
-
-export type ICart = [ICartItem];

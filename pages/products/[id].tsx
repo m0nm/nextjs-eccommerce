@@ -4,13 +4,13 @@ import Image from "next/image";
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { IProduct } from "../../interface/Index";
+import { useSession } from "next-auth/react";
+import { add_to_cart } from "../../utils/add_to_cart";
+import { useRouter } from "next/router";
 import cartSvg from "../../public/svg/cart.svg";
 import fullStarSvg from "../../public/svg/full-star.svg";
 import emptyStarSvg from "../../public/svg/empty-star.svg";
 import Rating from "react-rating";
-import { useSession } from "next-auth/react";
-import { add_to_cart } from "../../utils/add_to_cart";
-import { useRouter } from "next/router";
 
 function Product({ product }: { product: IProduct }) {
   // < ---- * ---- >

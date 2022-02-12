@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import { useMediaQuery } from "react-responsive";
 import { useSession } from "next-auth/react";
-import logo from "../../public/logo1.png";
+
 import DarkMode from "../dark-mode/DarkMode";
 import Sidebar from "./Sidebar/Sidebar";
 import UserCart from "./User_Cart/UserCart";
 
+import logo from "../../public/logo1.png";
 function Navbar() {
   // check if on mobile
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });

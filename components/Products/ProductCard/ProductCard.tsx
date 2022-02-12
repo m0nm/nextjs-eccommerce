@@ -1,14 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import React from "react";
+
 import { useSession } from "next-auth/react";
 import Rating from "react-rating";
+
 import { IProduct } from "../../../interface/Index";
+
+import { add_to_cart } from "../../../utils/add_to_cart";
+
 import cartSvg from "../../../public/svg/cart.svg";
 import fullStarSvg from "../../../public/svg/full-star.svg";
 import emptyStarSvg from "../../../public/svg/empty-star.svg";
-import Router from "next/router";
-import { add_to_cart } from "../../../utils/add_to_cart";
+
 function ProductCard({ product }: { product: IProduct }) {
   // rating stars
   const fullStar = (

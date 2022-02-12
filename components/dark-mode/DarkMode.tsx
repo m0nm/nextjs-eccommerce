@@ -1,7 +1,9 @@
-import { useTheme } from "next-themes";
 import Image from "next/image";
+
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
+
 import moonSvg from "../../public/svg/moon.svg";
 import sunSvg from "../../public/svg/sun.svg";
 

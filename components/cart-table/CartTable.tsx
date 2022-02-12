@@ -1,9 +1,12 @@
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { useSession } from "next-auth/react";
 import { useStore } from "../../store/store";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import { ICartItem } from "../../interface/Index";
+
 import closeSvg from "../../public/svg/close.svg";
 import spinner from "../../public/svg/spinner.gif";
 function CartTable() {
@@ -53,7 +56,6 @@ function CartTable() {
     return total;
   }, 0);
 
-  console.log("totalPrice: ", totalPrice);
   setTotalPrice(parseFloat(totalPrice.toFixed(2)));
   // < ------ * ------ >
   return (

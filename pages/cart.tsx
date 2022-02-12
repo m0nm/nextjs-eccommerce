@@ -1,8 +1,10 @@
 import { GetServerSideProps } from "next";
-import { getSession } from "next-auth/react";
 import Head from "next/head";
+
 import CartTable from "../components/cart-table/CartTable";
 import Navbar from "../components/Navbar/Navbar";
+
+import { getSession } from "next-auth/react";
 import { useStore } from "../store/store";
 
 function Cart() {
@@ -13,9 +15,10 @@ function Cart() {
       <Head>
         <title>Braoduct - Cart</title>
       </Head>
-
+      {/* --- Navbar --- */}
       <Navbar />
 
+      {/* --- Cart --- */}
       <div className="w-full px-2 min-h-screen flex flex-col md:flex-row md:justify-between">
         {/* cart table */}
         <CartTable />

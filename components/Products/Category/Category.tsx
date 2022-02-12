@@ -1,6 +1,8 @@
 import Image from "next/image";
+
 import { useState } from "react";
 import { useDetectClickOutside } from "react-detect-click-outside";
+
 import menuSvg from "../../../public/svg/category.svg";
 
 type IProps = {
