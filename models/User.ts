@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { IUser } from "../interface/Index";
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema<IUser>({
   email: {
     type: String,
     required: [true, "Please enter your email"],

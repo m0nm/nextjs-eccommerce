@@ -15,8 +15,6 @@ function CartTable() {
   const { data: session } = useSession();
 
   // < ------ * ------ >
-  // update cart when an item is deleted
-  const [update, setUpdate] = useState(false);
   // delete an item from cart
   const deleteItem = async (item: ICartItem) => {
     const res = await fetch(`/api/cart/${session?.user?.email}`, {
@@ -30,6 +28,8 @@ function CartTable() {
     setUpdate(!update);
   };
   // < ------ * ------ >
+  // re-fetch cart when a CRUD operation occures
+  const [update, setUpdate] = useState(false);
   // fetch user cart
   const [cart, setCart] = useState<ICartItem[]>([]);
 
@@ -42,9 +42,7 @@ function CartTable() {
       setCart(data);
     };
 
-    if (session) {
-      fetchCart();
-    }
+    session && fetchCart();
   }, [update, session]);
 
   // < ------ * ------ >
@@ -57,6 +55,19 @@ function CartTable() {
   }, 0);
 
   setTotalPrice(parseFloat(totalPrice.toFixed(2)));
+
+  // < ------ * ------ >
+  // increment/decrement quantity
+  const updateQuantity = async (targetItem: string, value: number) => {
+    const res = await fetch(`/api/cart/${session?.user?.email}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ value, targetItem }),
+    });
+    res.status === 200 && setUpdate(!update);
+  };
   // < ------ * ------ >
   return (
     <table className="bg-white dark:bg-zinc-800 w-full md:w-4/6 h-1/3 md:px-2 md:ml-4 mb-20 rounded-md shadow-md divide-y dark:divide-zinc-500">
@@ -120,7 +131,17 @@ function CartTable() {
                 <td className="text-center">${cartItem.price}</td>
 
                 {/* item quantity */}
-                <td className="text-center">{cartItem.quantity}</td>
+                <td className="h-full text-center text-xl flex flex-col items-center justify-center">
+                  <div
+                    onClick={() => updateQuantity(cartItem.title, 1)}
+                    className="w-0 scale-125 border-b-4 border-b-black border-x-4 border-x-transparent mb-1 dark:invert cursor-pointer"
+                  ></div>
+                  {cartItem.quantity}
+                  <div
+                    onClick={() => updateQuantity(cartItem.title, -1)}
+                    className="w-0 scale-125 border-t-4 border-t-black border-x-4 border-x-transparent mt-1 dark:invert cursor-pointer"
+                  ></div>
+                </td>
 
                 {/* remove item from cart */}
                 <td

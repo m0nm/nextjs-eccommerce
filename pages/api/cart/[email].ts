@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { ICartItem } from "../../../interface/Index";
 import dbConnect from "../../../lib/dbConnect";
 import User from "../../../models/User";
-import { ICartItem } from "../../../interface/Index";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -64,13 +64,35 @@ export default async function handler(
     }
   }
   // < ------ * ------ >
+  // increment/decrement quantity
+  if (req.method === "PUT") {
+    const { value, targetItem } = req.body;
+
+    try {
+      for (const cartItem of user.cart) {
+        // check if user quantity is always positive number
+        if (cartItem.quantity + value <= 0) {
+          return res.status(400).send("request denied");
+        }
+
+        if (cartItem.title === targetItem) {
+          cartItem.quantity += value;
+          await user.save();
+          res.status(200).send({ message: "quantity updated successfully" });
+        }
+      }
+    } catch (error) {
+      error instanceof Error && res.status(500).send("an error occured");
+    }
+  }
+  // < ------ * ------ >
   // delete from cart
   if (req.method === "DELETE") {
-    const { item } = req.body;
+    const { targetItem } = req.body;
 
     try {
       const newCart = user.cart.filter((cartItem: ICartItem) => {
-        if (cartItem.title !== item.title) {
+        if (cartItem.title !== targetItem.title) {
           return cartItem;
         }
       });

@@ -24,3 +24,11 @@ export type ICartItem = {
   quantity: number;
   price: number;
 };
+
+export type IUser = {
+  _id: string;
+  email: string;
+  password: string;
+
+  cart: ICartItem[];
+};

@@ -7,7 +7,7 @@ broaduct is a fullstack e-commerce app made with NextJS, NextAuth, Fake Store AP
 - Sign In/Sign Up with Credentials or Google Oauth.
 - Light and Dark Mode.
 - Searchable and Categorized Products
-- CRUD functionality to user's cart
+- CRUD functionality for user's cart
 
 ## Sections
 
