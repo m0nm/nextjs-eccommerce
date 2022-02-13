@@ -114,7 +114,7 @@ function Login() {
           {/* google sign-in */}
           <div
             onClick={handleGoogle}
-            className="cursor-pointer p-4 my-4 h-8 flex items-center border border-slate-300 dark:border-slate-500 rounded-2xl"
+            className="cursor-pointer p-4 mt-7 md:my-4 h-8 flex items-center border border-slate-300 dark:border-slate-500 rounded-2xl"
           >
             <Image
               alt="sign in with google"

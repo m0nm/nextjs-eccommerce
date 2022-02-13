@@ -75,24 +75,24 @@ function CartTable() {
       <thead>
         <tr className="divide-x dark:divide-zinc-500">
           {/* image */}
-          <th scope="col" className="p-2 md:w-32 text-left">
+          <th scope="col" className="pl-0 md:pl-2 md:w-32 text-left">
             Image
           </th>
           {/* name */}
-          <th scope="col" className="p-2 text-left w-1/3 md:w-1/2">
+          <th scope="col" className="px-2 md:p-0 text-left w-1/4 md:w-1/2">
             Name
           </th>
           {/* price */}
-          <th scope="col" className="p-2 text-center">
+          <th scope="col" className="text-center">
             Price
           </th>
           {/* quantity */}
-          <th scope="col" className="p-2 text-center w-1/6">
+          <th scope="col" className="text-center w-1/6">
             Quantity
           </th>
 
           {/* remove item */}
-          <th scope="col" className="p-2"></th>
+          <th scope="col" className=""></th>
         </tr>
       </thead>
 
@@ -125,7 +125,7 @@ function CartTable() {
                 </td>
 
                 {/* item name */}
-                <td className="p-2 md:p-0">{cartItem.title}</td>
+                <td className="px-2 md:p-0">{cartItem.title}</td>
 
                 {/* item price */}
                 <td className="text-center">${cartItem.price}</td>
