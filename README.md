@@ -33,7 +33,7 @@ broaduct is a fullstack e-commerce app made with NextJS, NextAuth, Fake Store AP
 
 1. Clone this repo
 2. run the command `npm install`
-3. open `.env` file. You'll need to add 5 things: website url, google client id and client secret, mongodb url and jwt secret
+3. create a `.env.local` file. You'll need to add 5 things: website url, google client id and client secret, mongodb url and jwt secret
 
 ```javascript
 // example:
@@ -53,9 +53,7 @@ CLIENT_SECRET="your google oauth client secret without the quotes"
 
 You can obtain Google Oauth Credentials over [here](https://developers.google.com/identity/protocols/oauth2)
 
-4. rename `.env` to `.env.local`
-
-5. run the command `npm run dev`
+4. run the command `npm run dev`
 
 ## Retrospectives
 
@@ -63,4 +61,4 @@ You can obtain Google Oauth Credentials over [here](https://developers.google.co
 
 - I should've configured NextAuth at the very beginning stage of my project, Back before i used a global state to maintain the user state, It was pretty inefficient and introduced many bugs. Trying to integrate it with NextAuth was a nightmare i had to re-write the project from the ground up!
 
-- I have now more familiarity working with git. Creating a branch for a feature i want to implement and then merging it to the `main` branch was a time and mental health saver!
+- I have now more familiarity working with git. Creating a branch for a feature i want to implement and then merging it to the `main` branch was a time saver! Although i should've squash the commits before merging them.
