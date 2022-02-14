@@ -16,13 +16,13 @@ function CartTable() {
 
   // < ------ * ------ >
   // delete an item from cart
-  const deleteItem = async (item: ICartItem) => {
+  const deleteItem = async (targetItem: ICartItem) => {
     const res = await fetch(`/api/cart/${session?.user?.email}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ item }),
+      body: JSON.stringify({ targetItem }),
     });
 
     setUpdate(!update);

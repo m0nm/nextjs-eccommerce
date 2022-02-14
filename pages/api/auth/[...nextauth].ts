@@ -18,16 +18,21 @@ export default NextAuth({
       credentials: {},
 
       async authorize(credentials, req) {
-        const res = await fetch(`${process.env.SERVER}/api/login`, {
-          method: "POST",
-          body: JSON.stringify({
-            email: req.body?.email,
-            password: req.body?.password,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const res = await fetch(
+          process.env.NODE_ENV === "production"
+            ? `https://${process.env.VERCEL_URL}/api/login`
+            : `${process.env.SERVER}/api/login`,
+          {
+            method: "POST",
+            body: JSON.stringify({
+              email: req.body?.email,
+              password: req.body?.password,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const user = await res.json();
 
