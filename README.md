@@ -1,6 +1,10 @@
-# Broaduct
+<h1 align="center">
+BROADUCT
+</h1>
 
+<p align="center">
 broaduct is a fullstack e-commerce app made with NextJS, NextAuth, Fake Store API and MongoDB.
+</p>
 
 ## Features
 
@@ -13,13 +17,23 @@ broaduct is a fullstack e-commerce app made with NextJS, NextAuth, Fake Store AP
 
 - **Home Page**: The home page shows a list of products which you can sort by search or category.
 
+![image](https://user-images.githubusercontent.com/88052316/153936245-0683a3b2-4b22-4916-ae70-9bbf31f492f1.png)
+
 - **Product Page**: The product page shows detailed information about the product. It can be navigated by clicking on the product image or name.
+
+![image](https://user-images.githubusercontent.com/88052316/153936360-feff69a7-39da-49af-97c7-12fd3ed70949.png)
+
 
 - **Login/Register Page**: The login/register page shows a form which the user can login/register with credentials or with Google Oauth.
 
+![image](https://user-images.githubusercontent.com/88052316/153936066-40093748-7efe-49f8-be9e-dd33b75323bf.png)
+
 - **Cart Page**: The cart page shows the user's cart items if any and the total price. This page is protected and can only be accessed by authenticated users.
 
-  > Note: Unfortunatly i could not add a paypal checkout feature to the cart page because paypal doesn't support my country.
+  > Note: I could not add a paypal checkout feature to the cart page because paypal doesn't support my country.
+
+![image](https://user-images.githubusercontent.com/88052316/153936535-b745b9c9-2a25-42f3-8430-f634e89f2d63.png)
+
 
 ## Technologies
 
